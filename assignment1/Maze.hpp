@@ -17,8 +17,8 @@ class Maze {
 	int * x1, * y1, * x2, * y2;
 public:
 	Maze();
-	Maze(int &);
-	Maze(int &,int &,int &);
+	Maze(int &seed);
+	Maze(int &seed,int &width,int &height);
 	void LoadBinary(char *);
 };
 
