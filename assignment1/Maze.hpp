@@ -10,16 +10,16 @@
 
 class Maze {
 	int seed;
-
 	int width;
 	int height;
 	int numOfLInes;
-	int * x1, * y1, * x2, * y2;
+	int *x1, *y1,*x2,*y2 = (int *)1000;
 public:
 	Maze();
 	Maze(int &seed);
 	Maze(int &seed,int &width,int &height);
-	void LoadBinary(char *);
+	void LoadBinary(char *filename);
+	void SaveSVG(char *filename);
 };
 
 #endif /* MAZE_HPP_ */
