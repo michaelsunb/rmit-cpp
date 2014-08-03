@@ -20,6 +20,14 @@ void Maze::SaveSVG(char *fileName)
 	cout << "svg height: " << this->height << endl;
 	cout << "svg number of lines: " << this->numOfLInes << endl;
 	cout << sizeof(this->x1) << endl;
+
+	for(int ip = 0; ip < this->numOfLInes  ; ip++)
+	{
+		cout << ip << "\tx1: " << x1[ip] << "\t" << flush;
+		cout << "\ty1: " << y1[ip] << "\t" << flush;
+		cout << "\tx2: " << x2[ip] << "\t" << flush;
+		cout << "\ty2: " << y2[ip] << "\t" << endl;
+	}
 }
 
 
