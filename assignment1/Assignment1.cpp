@@ -5,7 +5,6 @@
  *      Author: Michaelsun Baluyos
  */
 
-#include <string.h>
 #include "Assignment1.hpp"
 #include "Maze.hpp"
 
@@ -16,23 +15,40 @@ int main(int argc, char ** argv)
 	if(argc <= 1)
 	{
 		cout << "./exe --lb filename.maze --ss filename.svg \n"
-				"./exe -g seed --sb filename.maze\n"
-				"./exe -g seed --sv filename.svg\n"
-				"./exe -g seed --sb filename.maze --sv filename.svg" << endl;
+				"./exe -g seed width height --sb filename.maze\n"
+				"./exe -g seed width height --sv filename.svg\n"
+				"./exe -g seed width height --sb filename.maze "
+				"--sv filename.svg" << endl;
 		return 0;
 	}
 
-	Maze a;
+	int seed;
+	int width;
+	int height;
+	Maze *a;
 	for(int i = 1; i < argc ; i++)
 	{
+		if(strcmp(argv[i], "-g") == 0)
+		{
+			/*
+			 * atoi to convert a string in
+			 * a specific array into an int
+			 */
+			seed = atoi(argv[++i]);
+			width = atoi(argv[++i]);
+			height = atoi(argv[++i]);
+			a = new Maze(seed,width,height);
+		}
+
 		if(strcmp(argv[i], "--lb") == 0)
 		{
-			a.LoadBinary(argv[++i]);
+			a = new Maze();
+			a->LoadBinary(argv[++i]);
 		}
 
 		if(strcmp(argv[i], "--sv") == 0)
 		{
-			a.SaveSVG(argv[++i]);
+			a->SaveSVG(argv[++i]);
 		}
 	}
 

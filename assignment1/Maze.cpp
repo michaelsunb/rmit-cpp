@@ -9,14 +9,8 @@
 
 Maze::Maze()
 {
-	seed = width = height = numOfLInes = 0;
-}
-
-Maze::Maze(int &seed)
-{
-	this->seed = seed;
-
-	width = height = numOfLInes = 0;
+	seed,width,height,numOfLInes = 0;
+	x1,y1,x2,y2 = 0;
 }
 
 Maze::Maze(int &seed,int &width,int &height)
@@ -25,5 +19,6 @@ Maze::Maze(int &seed,int &width,int &height)
 	this->width = width;
 	this->height = height;
 
-	numOfLInes = 0;
+	this->numOfLInes = 0;
+	x1,y1,x2,y2 = 0;
 }

@@ -9,6 +9,8 @@
 #define ASSIGNMENT1_HPP_
 
 
+#include <string.h>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 

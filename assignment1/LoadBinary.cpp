@@ -21,10 +21,9 @@ void Maze::LoadBinary(char *fileName)
 	dataFile.open(fileName,ios::binary);
 
 	int binaryNumber = 0;
-	int x = 0;
-
-	int xyBinary = 0;
 	int xyBinaryLine = 0;
+
+	int x = 0;
 
 	if(!dataFile.is_open())
 	{
@@ -52,24 +51,23 @@ void Maze::LoadBinary(char *fileName)
 		}
 		else
 		{
-			if((xyBinary % everyForthBinary) == 0)
+			if(((binaryNumber - 3) % everyForthBinary) == 0)
 			{
-				x1[xyBinaryLine] = x;
+				this->x1[xyBinaryLine] = x;
 			}
-			if(((xyBinary + 3) % everyForthBinary) == 0)
+			if(((binaryNumber) % everyForthBinary) == 0)
 			{
-				y1[xyBinaryLine] = x;
+				this->y1[xyBinaryLine] = x;
 			}
-			if(((xyBinary + 2) % everyForthBinary) == 0)
+			if(((binaryNumber - 1) % everyForthBinary) == 0)
 			{
-				x2[xyBinaryLine] = x;
+				this->x2[xyBinaryLine] = x;
 			}
-			if(((xyBinary + 1) % everyForthBinary) == 0)
+			if(((binaryNumber - 2) % everyForthBinary) == 0)
 			{
-				y2[xyBinaryLine] = x;
+				this->y2[xyBinaryLine] = x;
 				xyBinaryLine++;
 			}
-			xyBinary++;
 		}
 		binaryNumber++;
 	}
