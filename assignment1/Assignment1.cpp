@@ -22,9 +22,6 @@ int main(int argc, char ** argv)
 		return 0;
 	}
 
-	int seed;
-	int width;
-	int height;
 	Maze *a;
 	for(int i = 1; i < argc ; i++)
 	{
@@ -34,9 +31,9 @@ int main(int argc, char ** argv)
 			 * atoi to convert a string in
 			 * a specific array into an int
 			 */
-			seed = atoi(argv[++i]);
-			width = atoi(argv[++i]);
-			height = atoi(argv[++i]);
+			const int seed = atoi(argv[++i]);
+			const int width = atoi(argv[++i]);
+			const int height = atoi(argv[++i]);
 			a = new Maze(seed,width,height);
 		}
 
