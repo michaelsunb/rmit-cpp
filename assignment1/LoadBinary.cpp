@@ -44,32 +44,30 @@ void Maze::LoadBinary(char *fileName)
 		else if(binaryNumber == numberOfLinesBinary)
 		{
 			this->numOfLInes = x;
-			this->x1=new int[numOfLInes];
-			this->y1=new int[numOfLInes];
-			this->x2=new int[numOfLInes];
-			this->y2=new int[numOfLInes];
+			vectors=new Edges[numOfLInes];
 		}
 		else
 		{
 			if(((binaryNumber - 3) % everyForthBinary) == 0)
 			{
-				this->x1[xyBinaryLine] = x;
+				vectors[xyBinaryLine].x1 = x;
 			}
 			if(((binaryNumber) % everyForthBinary) == 0)
 			{
-				this->y1[xyBinaryLine] = x;
+				vectors[xyBinaryLine].y1 = x;
 			}
 			if(((binaryNumber - 1) % everyForthBinary) == 0)
 			{
-				this->x2[xyBinaryLine] = x;
+				vectors[xyBinaryLine].x2 = x;
 			}
 			if(((binaryNumber - 2) % everyForthBinary) == 0)
 			{
-				this->y2[xyBinaryLine] = x;
+				vectors[xyBinaryLine].y2 = x;
 				xyBinaryLine++;
 			}
 		}
 		binaryNumber++;
 	}
+    cout << "Loading maze: " << fileName << endl;
 }
 

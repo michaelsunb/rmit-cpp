@@ -17,7 +17,6 @@ Maze::Maze(const int &seed,const int &width,const int &height)
 	if((defaultSeed && defaultWidth && defaultHeight) == 0)
 	{
 		this->numOfLInes = 0;
-		x1=y1=x2=y2=0;
 		return;
 	}
 }

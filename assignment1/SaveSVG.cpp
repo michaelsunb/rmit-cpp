@@ -2,7 +2,7 @@
  * SaveSVG.cpp
  *
  *  Created on: 3 Aug 2014
- *      Author: Rollide
+ *      Author: Michaelsun Baluyos
  */
 
 #include "Assignment1.hpp"
@@ -26,17 +26,18 @@ void Maze::SaveSVG(char *fileName)
 		 * Use float to reduce memory consumption
 		 */
 		svgFile << "<line stroke='white' stroke-width='0.005'"
-				" x1='" << float(x1[ip])/width << "'"
-				" y1='" << float(y1[ip])/height << "'"
-				" x2='" << float(x2[ip])/width << "'"
-				" y2='" << float(y2[ip])/height << "'/>" << endl;
+				" x1='" << float(vectors[ip].x1)/width << "'"
+				" y1='" << float(vectors[ip].y1)/height << "'"
+				" x2='" << float(vectors[ip].x2)/width << "'"
+				" y2='" << float(vectors[ip].y2)/height << "'/>" << endl;
 	}
 
 	svgFile << "</svg>" << flush;
 	svgFile.close();
 
-	cout << "Successfully created " << fileName << "!" << endl;
+	cout << "Saving svg maze: " << fileName << endl;
 }
 
 
 
+// rand s.rand
