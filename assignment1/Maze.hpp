@@ -4,11 +4,11 @@
  *  Created on: 2 Aug 2014
  *      Author: Michaelsun Baluyos
  */
- 
-#include "Edges.hpp"
 
 #ifndef MAZE_HPP_
 #define MAZE_HPP_
+
+#include "Edges.hpp"
 
 const int defaultSeed = 0;
 const int defaultWidth = 0;

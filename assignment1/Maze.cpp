@@ -14,9 +14,13 @@ Maze::Maze(const int &seed,const int &width,const int &height)
 	this->width = width;
 	this->height = height;
 
-	if((defaultSeed && defaultWidth && defaultHeight) == 0)
+	if(seed == defaultSeed && width ==  defaultWidth &&
+			height ==  defaultHeight)
 	{
 		this->numOfLInes = 0;
 		return;
 	}
+
+	this->numOfLInes = (width * height) -1;
+	vectors=new Edges[numOfLInes];
 }
