@@ -11,10 +11,10 @@
 struct Edges
 {
 	int x1;
-    int y1;
-    int x2;
-    int y2;
+	int y1;
+	int x2;
+	int y2;
 };
 
 
-#endif /* ASSIGNMENT1_HPP_ */
+#endif /* EDGES_HPP_ */

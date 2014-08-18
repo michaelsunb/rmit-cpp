@@ -22,5 +22,5 @@ Maze::Maze(const int &seed,const int &width,const int &height)
 	}
 
 	this->numOfLInes = (width * height) -1;
-	vectors=new Edges[numOfLInes];
+	eArray.resize(this->numOfLInes, {0,0,0,0});
 }

@@ -8,6 +8,7 @@
 #ifndef MAZE_HPP_
 #define MAZE_HPP_
 
+#include "Assignment1.hpp"
 #include "Edges.hpp"
 
 const int defaultSeed = 0;
@@ -21,10 +22,10 @@ private:
 	int width;
 	int height;
 	int numOfLInes;
-    Edges *vectors;
+	std::vector<Edges> eArray;
 public:
 	Maze(): Maze(defaultSeed,defaultWidth,defaultHeight)
-    {};
+	{}; // Default constructor
 	Maze(const int &seed,const int &width,const int &height);
 	void LoadBinary(char *filename);
 	void SaveSVG(char *filename);

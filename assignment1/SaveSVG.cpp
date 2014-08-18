@@ -26,10 +26,10 @@ void Maze::SaveSVG(char *fileName)
 		 * Use float to reduce memory consumption
 		 */
 		svgFile << "<line stroke='white' stroke-width='0.005'"
-				" x1='" << float(vectors[ip].x1)/width << "'"
-				" y1='" << float(vectors[ip].y1)/height << "'"
-				" x2='" << float(vectors[ip].x2)/width << "'"
-				" y2='" << float(vectors[ip].y2)/height << "'/>" << endl;
+				" x1='" << float(eArray[ip].x1)/width << "'"
+				" y1='" << float(eArray[ip].y1)/height << "'"
+				" x2='" << float(eArray[ip].x2)/width << "'"
+				" y2='" << float(eArray[ip].y2)/height << "'/>" << endl;
 	}
 
 	svgFile << "</svg>" << flush;

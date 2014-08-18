@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 #endif /* ASSIGNMENT1_HPP_ */
