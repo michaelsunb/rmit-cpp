@@ -44,6 +44,9 @@ void Maze::LoadBinary(char *fileName)
 		else if(binaryNumber == numberOfLinesBinary)
 		{
 			this->numOfLInes = x;
+			/**
+			 * Initialise edge vector
+			 */
 			eArray.resize(this->numOfLInes);
 		}
 		else
@@ -65,7 +68,6 @@ void Maze::LoadBinary(char *fileName)
 				eArray[xyBinaryLine].y2 = x;
 				xyBinaryLine++;
 			}
-			//eArray.push_back({x1,y1,x2,y2});
 		}
 		binaryNumber++;
 	}

@@ -10,6 +10,7 @@
 
 #include "Assignment1.hpp"
 #include "Edges.hpp"
+#include "Cell.hpp"
 
 const int defaultSeed = 0;
 const int defaultWidth = 0;
@@ -23,6 +24,7 @@ private:
 	int height;
 	int numOfLInes;
 	std::vector<Edges> eArray;
+	std::vector<std::vector<Cell>> twoDCell;
 public:
 	Maze(): Maze(defaultSeed,defaultWidth,defaultHeight)
 	{}; // Default constructor

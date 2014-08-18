@@ -37,7 +37,3 @@ void Maze::SaveSVG(char *fileName)
 
 	cout << "Saving svg maze: " << fileName << endl;
 }
-
-
-
-// rand s.rand

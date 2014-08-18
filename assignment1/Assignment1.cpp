@@ -6,6 +6,7 @@
  */
 
 #include "Assignment1.hpp"
+#include "DepthBuilder.hpp"
 #include "Maze.hpp"
 
 using namespace std;
@@ -27,10 +28,12 @@ int main(int argc, char ** argv)
 	{
 		if(strcmp(argv[i], "-g") == 0)
 		{
-			/*
-			 * atoi to convert a string in
-			 * a specific array into an int
-			 */
+
+			 /**
+			  * atoi to convert a string in
+			  * a specific array into an int
+			  */
+
 			const int seed = atoi(argv[++i]);
 			const int width = atoi(argv[++i]);
 			const int height = atoi(argv[++i]);
