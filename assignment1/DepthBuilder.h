@@ -16,15 +16,19 @@
 class DepthBuilder
 {
 private:
-	int seed;
-	int width;
-	int height;
-	Maze buildMaze;
+	int width = 0;
+	int height = 0;
+	Maze* buildMaze;
+
 	enum DIR { xIncrementGoEast, yIncrementGoNorth, xDecrementGoWest, yDecrementGoSouth};
+	std::vector<DIR> allowableNeighbours; // to store which allowed direction
+	int currentX = 0;
+	int currentY = 0;
+
+	void CheckNeighbours();
+	void ChooseRandomNeighbour();
 public:
-	DepthBuilder();
-	void Build(Maze maze,int width, int height,int seed);
-	void display();
+	void Build(Maze &maze,int width, int height,int seed);
 };
 
 

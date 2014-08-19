@@ -5,8 +5,8 @@
  *      Author: Michaelsun Baluyos
  */
 
-#include "Assignment1.hpp"
-#include "Maze.hpp"
+#include "Assignment1.h"
+#include "Maze.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ void Maze::SaveSVG(char *fileName)
 			"xmlns='http://www.w3.org/2000/svg'>\n"
 			"<rect width='1' height='1' style='fill: black' />" << endl;
 
-	for(int ip = 0; ip < this->numOfLInes  ; ip++)
+	for(int ip = 0; ip < this->numOfEdges  ; ip++)
 	{
 		/*
 		 * We want to cast the x,y arrays to float

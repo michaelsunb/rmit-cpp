@@ -22,7 +22,7 @@ private:
 	int seed;
 	int width;
 	int height;
-	int numOfLInes;
+	int numOfEdges;
 	
 	// for recursive backtracker
 	std::vector<Edges> eArray;
@@ -35,10 +35,12 @@ public:
 	void LoadBinary(char *filename);
 	void SaveSVG(char *filename);
 	
+	void setWidth(int width);
+	void setHeight(int height);
+	void setNumOfEdges(int height);
+
 	std::vector<Edges> & mazeEdgeArray();
 	std::vector<std::vector<Cell>> & mazeCellArray();
-	//void setCellArray(Cell inCell);
-	//void setEdgeArray(Edges inEdge);
 };
 
 #endif /* MAZE_H_ */

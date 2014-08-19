@@ -5,8 +5,8 @@
  *      Author: Michaelsun Baluyos
  */
 
-#include "Assignment1.hpp"
-#include "Maze.hpp"
+#include "Assignment1.h"
+#include "Maze.h"
 
 const int widthBinary = 0;
 const int heightBinary = 1;
@@ -43,11 +43,11 @@ void Maze::LoadBinary(char *fileName)
 		}
 		else if(binaryNumber == numberOfLinesBinary)
 		{
-			this->numOfLInes = x;
+			this->numOfEdges = x;
 			/**
 			 * Initialise edge vector
 			 */
-			eArray.resize(this->numOfLInes);
+			eArray.resize(this->numOfEdges);
 		}
 		else
 		{
