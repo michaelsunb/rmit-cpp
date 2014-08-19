@@ -1,12 +1,12 @@
 /*
- * Assignment1.hpp
+ * Assignment1.h
  *
  *  Created on: 2 Aug 2014
  *      Author: Michaelsun Baluyos
  */
 
-#ifndef ASSIGNMENT1_HPP_
-#define ASSIGNMENT1_HPP_
+#ifndef ASSIGNMENT1_H_
+#define ASSIGNMENT1_H_
 
 
 #include <string.h>
