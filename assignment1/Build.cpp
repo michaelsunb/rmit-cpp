@@ -23,6 +23,7 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			<< ", width: " << width
 			<< ", height: " << height << endl;
 
+	vector<Edges> & mazeEdges = this->buildMaze->mazeEdgeArray();
 	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
 	this->buildMaze->setWidth(width);
 	this->buildMaze->setHeight(height);
@@ -52,14 +53,7 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 
 			this->ChooseRandomNeighbour();
 
-			this->buildMaze->mazeEdgeArray().push_back(
-				{
-					prevX,
-					prevY,
-					currentX,
-					currentY
-				}
-			);
+			mazeEdges.push_back({prevX,prevY,currentX,currentY});
 			mazeArray[currentX][currentY].visited = true;
 
 			trail.push(mazeArray[currentX][currentY]); // use stack

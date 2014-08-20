@@ -35,8 +35,7 @@ int main(int argc, char ** argv)
 			const int width = atoi(argv[++i]);
 			const int height = atoi(argv[++i]);
 
-			DepthBuilder mazeGen = DepthBuilder();
-			mazeGen.Build(*aMazeIn,width,height,seed);
+			DepthBuilder().Build(*aMazeIn,width,height,seed);
 		}
 
 		if(strcmp(argv[i], "--lb") == 0)
