@@ -1,5 +1,5 @@
 /*
- * DepthBuilder.cpp
+ * Build.cpp
  *
  *  Created on: 20 Aug 2014
  *      Author: Michaelsun Baluyos
@@ -14,14 +14,14 @@ using namespace std;
 
 void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 {
-	cout << "Generating maze with seed: " << seed
-			<< ", width: " << width
-			<< ", height: " << height << endl;
-
 	srand(seed);
 	this->buildMaze = &maze;
 	this->width = width;
 	this->height = height;
+
+	cout << "Generating maze with seed: " << seed
+			<< ", width: " << width
+			<< ", height: " << height << endl;
 
 	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
 	this->buildMaze->setWidth(width);
