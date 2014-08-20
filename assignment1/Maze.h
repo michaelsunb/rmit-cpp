@@ -12,10 +12,6 @@
 #include "Edges.h"
 #include "Cell.h"
 
-const int defaultSeed = 0;
-const int defaultWidth = 0;
-const int defaultHeight = 0;
-
 class Maze
 {
 private:
@@ -29,10 +25,8 @@ private:
 	std::vector<std::vector<Cell>> twoDCell;
 	
 public:
-	Maze(): Maze(defaultSeed,defaultWidth,defaultHeight)
-	{}; // Default constructor
-	Maze(const int &seed,const int &width,const int &height);
 	void LoadBinary(char *filename);
+	void SaveBinary(char *filename);
 	void SaveSVG(char *filename);
 	
 	void setWidth(int width);

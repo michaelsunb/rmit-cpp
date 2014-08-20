@@ -31,7 +31,6 @@ int main(int argc, char ** argv)
 			  * atoi to convert a string in
 			  * a specific array into an int
 			  */
-
 			const int seed = atoi(argv[++i]);
 			const int width = atoi(argv[++i]);
 			const int height = atoi(argv[++i]);
@@ -43,6 +42,11 @@ int main(int argc, char ** argv)
 		if(strcmp(argv[i], "--lb") == 0)
 		{
 			aMazeIn->LoadBinary(argv[++i]);
+		}
+
+		if(strcmp(argv[i], "--sb") == 0)
+		{
+			aMazeIn->SaveBinary(argv[++i]);
 		}
 
 		if(strcmp(argv[i], "--ss") == 0)

@@ -20,7 +20,7 @@ private:
 	int height = 0;
 	Maze* buildMaze;
 
-	enum DIR { xIncrementGoEast, yIncrementGoNorth, xDecrementGoWest, yDecrementGoSouth};
+	enum DIR {xIncrementGoEast,yIncrementGoNorth,xDecrementGoWest,yDecrementGoSouth};
 	std::vector<DIR> allowableNeighbours; // to store which allowed direction
 	int currentX = 0;
 	int currentY = 0;
