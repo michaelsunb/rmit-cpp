@@ -14,6 +14,10 @@ using namespace std;
 
 void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 {
+	cout << "Generating maze with seed: " << seed
+			<< ", width: " << width
+			<< ", height: " << height << endl;
+
 	srand(seed);
 	this->buildMaze = &maze;
 	this->width = width;
@@ -72,8 +76,4 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			trail.pop();
 		}
 	}
-
-	cout << "Generating maze with seed: " << seed
-			<< ", width: " << width
-			<< ", height: " << height << endl;
 }

@@ -12,6 +12,8 @@ using namespace std;
 
 void Maze::SaveSVG(char *fileName)
 {
+	cout << "Saving svg maze: " << fileName << endl;
+
 	ofstream svgFile(fileName, ofstream::out);
 	svgFile << "<svg viewBox='0 0 1 1' width='500' height='500' "
 			"xmlns='http://www.w3.org/2000/svg'>\n"
@@ -34,6 +36,4 @@ void Maze::SaveSVG(char *fileName)
 
 	svgFile << "</svg>" << flush;
 	svgFile.close();
-
-	cout << "Saving svg maze: " << fileName << endl;
 }

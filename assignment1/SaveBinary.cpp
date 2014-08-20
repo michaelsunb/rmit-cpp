@@ -13,6 +13,8 @@ using namespace std;
 
 void Maze::SaveBinary(char *fileName)
 {
+	cout << "Saving binary maze: " << fileName << endl;
+
 	fstream dataFile(fileName, ios::out | ios::binary);
 
 	dataFile.write((char*)&width,sizeof(int));
@@ -25,8 +27,6 @@ void Maze::SaveBinary(char *fileName)
 		dataFile.write((char*)&eArray[ip].y1,sizeof(int));
 		dataFile.write((char*)&eArray[ip].x2,sizeof(int));
 		dataFile.write((char*)&eArray[ip].y2,sizeof(int));
-    }
+	}
 	dataFile.close();
-
-	cout << "Saving binary maze: " << fileName << endl;
 }

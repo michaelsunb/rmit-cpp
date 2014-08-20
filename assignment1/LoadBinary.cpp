@@ -17,6 +17,8 @@ using namespace std;
 
 void Maze::LoadBinary(char *fileName)
 {
+	cout << "Loading maze: " << fileName << endl;
+
 	ifstream dataFile;
 	dataFile.open(fileName,ios::binary);
 
@@ -71,6 +73,5 @@ void Maze::LoadBinary(char *fileName)
 		}
 		binaryNumber++;
 	}
-	cout << "Loading maze: " << fileName << endl;
 }
 
