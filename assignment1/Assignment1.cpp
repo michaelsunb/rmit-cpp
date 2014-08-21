@@ -18,7 +18,7 @@ int main(int argc, char ** argv)
 				"./exe -g seed width height --sb filename.maze\n"
 				"./exe -g seed width height --ss filename.svg\n"
 				"./exe -g seed width height --sb filename.maze "
-				"--sv filename.svg" << endl;
+				"--ss filename.svg" << endl;
 		return 0;
 	}
 
