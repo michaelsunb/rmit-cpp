@@ -6,8 +6,8 @@
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#include "DepthBuilder.h"
-#include "Maze.h"
+#include "../DepthBuilder.h"
+#include "../Maze.h"
 #include <stack>
 
 using namespace std;
@@ -44,6 +44,11 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 
 	while(trail.empty()==false)
 	{
+		/**
+		 * Go to ChooseRandomNeighbour method
+		 * to generate a vector of neighbours
+		 * not visited yet
+		 */
 		this->CheckNeighbours();
 
 		if(allowableNeighbours.empty()==false)
@@ -51,6 +56,10 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			int prevX = currentX;
 			int prevY = currentY;
 
+			/**
+			 * Randomly choose whether to go
+			 * North, South East, West
+			 */
 			this->ChooseRandomNeighbour();
 
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});

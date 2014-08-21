@@ -5,8 +5,8 @@
  *      Author: Michaelsun Baluyos
  */
 
-#include "Assignment1.h"
-#include "Maze.h"
+#include "../Assignment1.h"
+#include "../Maze.h"
 
 using namespace std;
 

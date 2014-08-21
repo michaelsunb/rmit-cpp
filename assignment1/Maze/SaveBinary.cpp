@@ -6,8 +6,8 @@
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#include "Assignment1.h"
-#include "Maze.h"
+#include "../Assignment1.h"
+#include "../Maze.h"
 
 using namespace std;
 

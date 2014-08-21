@@ -6,9 +6,9 @@
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#include "Cell.h"
-#include "DepthBuilder.h"
-#include "Assignment1.h"
+#include "../Cell.h"
+#include "../DepthBuilder.h"
+#include "../Assignment1.h"
 
 void DepthBuilder::CheckNeighbours()
 {

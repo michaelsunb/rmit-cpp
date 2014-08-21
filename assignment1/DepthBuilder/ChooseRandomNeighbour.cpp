@@ -7,7 +7,7 @@
  */
 
 
-#include "DepthBuilder.h"
+#include "../DepthBuilder.h"
 
 
 void DepthBuilder::ChooseRandomNeighbour()
