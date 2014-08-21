@@ -20,7 +20,9 @@ private:
 	int height;
 	int numOfEdges;
 	
-	// for recursive backtracker
+	/**
+	 * for recursive backtracker
+	 */
 	std::vector<Edges> eArray;
 	std::vector<std::vector<Cell>> twoDCell;
 	
@@ -28,11 +30,14 @@ public:
 	void LoadBinary(char *filename);
 	void SaveBinary(char *filename);
 	void SaveSVG(char *filename);
-	
+
 	void setWidth(int width);
 	void setHeight(int height);
 	void setNumOfEdges(int height);
 
+	/**
+	 * for recursive backtracker
+	 */
 	std::vector<Edges> & mazeEdgeArray();
 	std::vector<std::vector<Cell>> & mazeCellArray();
 };

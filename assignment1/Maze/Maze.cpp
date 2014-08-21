@@ -10,16 +10,25 @@
 
 using namespace std;
 
+/**
+ * Return a reference of a 2d vector array
+ */
 vector<vector<Cell>> & Maze::mazeCellArray()
 {
 	return twoDCell;
 }
 
+/**
+ * Return a reference of a vector array
+ */
 vector<Edges> & Maze::mazeEdgeArray()
 {
 	return eArray;
 }
 
+/**
+ * Setters because who needs getters
+ */
 void Maze::setWidth(int width)
 {
 	this->width = width;

@@ -14,31 +14,54 @@ using namespace std;
 
 void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 {
+	/**
+	 * enter seed in srand
+	 */
 	srand(seed);
-	this->buildMaze = &maze;
-	this->width = width;
-	this->height = height;
 
 	cout << "Generating maze with seed: " << seed
 			<< ", width: " << width
 			<< ", height: " << height << endl;
 
-	vector<Edges> & mazeEdges = this->buildMaze->mazeEdgeArray();
-	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
+	/**
+	 * Set these class members for the other methods
+	 */
+	this->buildMaze = &maze;
+	this->width = width;
+	this->height = height;
+
+	/**
+	 * Set the width, height, number of edges in
+	 * the Maze class.
+	 */
 	this->buildMaze->setWidth(width);
 	this->buildMaze->setHeight(height);
 	this->buildMaze->setNumOfEdges((width * height) - 1);
 
-	// initialise first dimension with width
+	vector<Edges> & mazeEdges = this->buildMaze->mazeEdgeArray();
+	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
+
+	/**
+	 * initialise first dimension with width
+	 */
 	mazeArray.resize(width);
 	for(int x=0;x<width;x++)
 	{
 		for(int y=0;y<height;y++)
 		{
+			/**
+			 * we can initialise (resize) the vector
+			 * in the for loop before this but
+			 * just use push_back
+			 */
 			mazeArray[x].push_back({false,x, y});
 		}
 	}
 
+	/**
+	 * Vectors? Why not try something different.
+	 * Let's use a stack!
+	 */
 	stack<Cell> trail;
 	trail.push(mazeArray[currentX][currentY]);
 
@@ -51,7 +74,13 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 		 */
 		this->CheckNeighbours();
 
-		if(allowableNeighbours.empty()==false)
+		/**
+		 * The above method will set an array
+		 * of allowableNeighbours. So we can
+		 * check if there is at least 1
+		 * direction we can go
+		 */
+		if(!allowableNeighbours.empty())
 		{
 			int prevX = currentX;
 			int prevY = currentY;
@@ -65,17 +94,30 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});
 			mazeArray[currentX][currentY].visited = true;
 
-			trail.push(mazeArray[currentX][currentY]); // use stack
+			/**
+			 * Create a stack and head back to the start
+			 * of the loop
+			 */
+			trail.push(mazeArray[currentX][currentY]);
 		}
 		else
 		{
-			// If the trail stack is not empty, set curX and curY to refer to the
-			// position of the top item in the trail stack.
-			if(trail.empty()==false) {
+			/**
+			 * If the allowableNeighbours is empty, it means
+			 * that the trail is not allowed to go in any
+			 * direction.
+			 * So we set the currentX and currentY to refer
+			 * to the position of the top of the stack in
+			 * the trail.
+			 */
+			if(!trail.empty()) {
 				currentX=trail.top().x2;
 				currentY=trail.top().y2;
 			}
-			// Pop the top item from the trail stack
+			/**
+			 * Pop the top stack from the trail go back one
+			 * and head back to the start of the loop
+			 */
 			trail.pop();
 		}
 	}

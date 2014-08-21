@@ -22,56 +22,71 @@ void Maze::LoadBinary(char *fileName)
 	ifstream dataFile;
 	dataFile.open(fileName,ios::binary);
 
-	int binaryNumber = 0;
-	int xyBinaryLine = 0;
+	/**
+	 * Check if the file can be opened
+	 */
+	if(!dataFile.is_open())
+	{
+		throw "Maze binary file was not found";
+		return;
+	}
+
+	int binaryElement = 0;
+	int xyBinaryElement = 0;
 
 	int x = 0;
 
-	if(!dataFile.is_open())
-	{
-		return;
-	}
+	/**
+	 * Loop the binary file
+	 * until the end of file
+	 */
 	while(!dataFile.eof())
 	{
+		/**
+		 * Read the binary file and
+		 * set the read value into x
+		 */
 		dataFile.read((char*)&x,sizeof(int));
 
-		if(binaryNumber == widthBinary)
+		if(binaryElement == widthBinary)
 		{
-			this->width = x;
+			this->setWidth(x);
 		}
-		else if(binaryNumber == heightBinary)
+		else if(binaryElement == heightBinary)
 		{
-			this->height = x;
+			this->setHeight(x);
 		}
-		else if(binaryNumber == numberOfLinesBinary)
+		else if(binaryElement == numberOfLinesBinary)
 		{
-			this->numOfEdges = x;
+			this->setNumOfEdges(x);
 			/**
 			 * Initialise edge vector
+			 * Create an array size based on
+			 * the number of edges
 			 */
 			eArray.resize(this->numOfEdges);
 		}
 		else
 		{
-			if(((binaryNumber - 3) % everyForthBinary) == 0)
+			if(((binaryElement - 3) % everyForthBinary) == 0)
 			{
-				eArray[xyBinaryLine].x1 = x;
+				eArray[xyBinaryElement].x1 = x;
 			}
-			if(((binaryNumber) % everyForthBinary) == 0)
+			if(((binaryElement) % everyForthBinary) == 0)
 			{
-				eArray[xyBinaryLine].y1 = x;
+				eArray[xyBinaryElement].y1 = x;
 			}
-			if(((binaryNumber - 1) % everyForthBinary) == 0)
+			if(((binaryElement - 1) % everyForthBinary) == 0)
 			{
-				eArray[xyBinaryLine].x2 = x;
+				eArray[xyBinaryElement].x2 = x;
 			}
-			if(((binaryNumber - 2) % everyForthBinary) == 0)
+			if(((binaryElement - 2) % everyForthBinary) == 0)
 			{
-				eArray[xyBinaryLine].y2 = x;
-				xyBinaryLine++;
+				eArray[xyBinaryElement].y2 = x;
+				xyBinaryElement++;
 			}
 		}
-		binaryNumber++;
+		binaryElement++;
 	}
 }
 

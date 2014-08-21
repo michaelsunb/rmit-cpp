@@ -20,14 +20,36 @@ private:
 	int height = 0;
 	Maze* buildMaze;
 
-	enum DIR {xIncrementGoEast,yIncrementGoNorth,xDecrementGoWest,yDecrementGoSouth};
-	std::vector<DIR> allowableNeighbours; // to store which allowed direction
+	/**
+	 * enum of direction indicating that
+	 * x increment go east
+	 * y increment go north
+	 * x decrement go west
+	 * y decrement go south
+	 */
+	enum DIR {xIncrementGoEast,
+		yIncrementGoNorth,
+		xDecrementGoWest,
+		yDecrementGoSouth};
+
+	/**
+	 * To store which allowed direction
+	 */
+	std::vector<DIR> allowableNeighbours;
 	int currentX = 0;
 	int currentY = 0;
 
+	/**
+	 * Private methods because why do
+	 * other classes need to access
+	 * these methods
+	 */
 	void CheckNeighbours();
 	void ChooseRandomNeighbour();
 public:
+	/**
+	 * Build method as stated in lab 4
+	 */
 	void Build(Maze &maze,int width, int height,int seed);
 };
 

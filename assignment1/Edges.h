@@ -8,6 +8,11 @@
 #ifndef EDGES_H_
 #define EDGES_H_
 
+/**
+ * Edges represents
+ * the walls of the
+ * maze
+ */
 struct Edges
 {
 	int x1;
