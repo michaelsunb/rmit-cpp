@@ -10,36 +10,42 @@
 
 using namespace std;
 
-/**
- * Return a reference of a 2d vector array
- */
 vector<vector<Cell>> & Maze::mazeCellArray()
 {
 	return twoDCell;
 }
 
-/**
- * Return a reference of a vector array
- */
 vector<Edges> & Maze::mazeEdgeArray()
 {
 	return eArray;
 }
 
-/**
- * Setters because who needs getters
- */
 void Maze::setWidth(int width)
 {
+	if(width < 0)
+	{
+		throw "Invalid args";
+		return;
+	}
 	this->width = width;
 }
 
 void Maze::setHeight(int height)
 {
+	if(height < 0)
+	{
+		throw "Invalid args";
+		return;
+	}
 	this->height = height;
 }
 
 void Maze::setNumOfEdges(int numOfEdges)
 {
+	if(numOfEdges < 0)
+	{
+		throw "Invalid args";
+		return;
+	}
 	this->numOfEdges = numOfEdges;
 }

@@ -19,12 +19,8 @@ void Maze::LoadBinary(char *fileName)
 {
 	cout << "Loading maze: " << fileName << endl;
 
-	ifstream dataFile;
-	dataFile.open(fileName,ios::binary);
+	ifstream dataFile(fileName,ios::binary);
 
-	/**
-	 * Check if the file can be opened
-	 */
 	if(!dataFile.is_open())
 	{
 		throw "Maze binary file was not found";
@@ -52,6 +48,16 @@ void Maze::LoadBinary(char *fileName)
 		 */
 		dataFile.read((char*)&x,sizeof(int));
 
+		/**
+		 * None of the binary values should
+		 * be less than zero. None!
+		 */
+		if(x < 0)
+		{
+			throw "Invalid binary file";
+			return;
+		}
+
 		if(binaryElement == widthBinary)
 		{
 			this->setWidth(x);
@@ -72,6 +78,11 @@ void Maze::LoadBinary(char *fileName)
 		}
 		else
 		{
+			if(xyBinaryElement >= numOfEdges)
+			{
+				throw "Invalid binary file";
+				return;
+			}
 			/**
 			 * After setting the width, height and number
 			 * of Edges, we now set the x1,y1,x2,y2 values
@@ -107,6 +118,13 @@ void Maze::LoadBinary(char *fileName)
 			}
 		}
 		binaryElement++;
+	}
+	dataFile.close();
+
+	if(xyBinaryElement != this->numOfEdges)
+	{
+		throw "Invalid binary file";
+		return;
 	}
 }
 

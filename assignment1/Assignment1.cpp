@@ -16,9 +16,9 @@ int main(int argc, char ** argv)
 	{
 		cout << "./exe --lb filename.maze --ss filename.svg \n"
 				"./exe -g seed width height --sb filename.maze\n"
-				"./exe -g seed width height --ss filename.svg\n"
+				"./exe -g seed width height --sv filename.svg\n"
 				"./exe -g seed width height --sb filename.maze "
-				"--ss filename.svg" << endl;
+				"--sv filename.svg" << endl;
 		return 0;
 	}
 
@@ -52,10 +52,6 @@ int main(int argc, char ** argv)
 				 * parameters
 				 */
 				aMazeIn = new Maze();
-				/**
-				 * Pointer of Maze will be modified
-				 * and generate a new maze.
-				 */
 				DepthBuilder().Build(*aMazeIn,width,height,seed);
 			}
 
@@ -78,7 +74,7 @@ int main(int argc, char ** argv)
 				aMazeIn->SaveBinary(argv[++i]);
 			}
 
-			if(strcmp(argv[i], "--ss") == 0)
+			if(strcmp(argv[i], "--sv") == 0)
 			{
 				if(aMazeIn == nullptr)
 				{

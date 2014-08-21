@@ -14,26 +14,16 @@ using namespace std;
 
 void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 {
-	/**
-	 * enter seed in srand
-	 */
 	srand(seed);
 
 	cout << "Generating maze with seed: " << seed
 			<< ", width: " << width
 			<< ", height: " << height << endl;
 
-	/**
-	 * Set these class members for the other methods
-	 */
 	this->buildMaze = &maze;
 	this->width = width;
 	this->height = height;
 
-	/**
-	 * Set the width, height, number of edges in
-	 * the Maze class.
-	 */
 	this->buildMaze->setWidth(width);
 	this->buildMaze->setHeight(height);
 	this->buildMaze->setNumOfEdges((width * height) - 1);
@@ -58,7 +48,9 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			/**
 			 * we can initialise (resize) the vector
 			 * in the for loop before this but
-			 * just use push_back
+			 * just use push_back because we need
+			 * to the cell struct to false and
+			 * the current x and y value
 			 */
 			mazeArray[x].push_back({false,x, y});
 		}
@@ -97,14 +89,7 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			 */
 			this->ChooseRandomNeighbour();
 
-			/**
-			 * Set the maze edge in the Maze class
-			 */
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});
-
-			/**
-			 * Set the maze cell in the Maze class to true
-			 */
 			mazeArray[currentX][currentY].visited = true;
 
 			/**
