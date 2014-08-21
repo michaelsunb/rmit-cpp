@@ -43,12 +43,25 @@ private:
 	 * Private methods because why do
 	 * other classes need to access
 	 * these methods
+	 *
+	 * CheckNeighbours to check the
+	 * current stack's neighbours
+	 * and set them in allowableNeighbours
+	 * vector
 	 */
 	void CheckNeighbours();
+
+	/**
+	 * Based on the non-visited neighhbours
+	 * choose a random neighbour to go to
+	 */
 	void ChooseRandomNeighbour();
 public:
+
 	/**
 	 * Build method as stated in lab 4
+	 * For object orientation
+	 * Used to generate a new maze
 	 */
 	void Build(Maze &maze,int width, int height,int seed);
 };

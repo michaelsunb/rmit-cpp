@@ -10,7 +10,7 @@
 
 const int widthBinary = 0;
 const int heightBinary = 1;
-const int numberOfLinesBinary = 2;
+const int numberOfEdgesBinary = 2;
 const int everyForthBinary = 4;
 
 using namespace std;
@@ -31,6 +31,10 @@ void Maze::LoadBinary(char *fileName)
 		return;
 	}
 
+	/**
+	 * Use binaryElement to get the first
+	 * three binary numbers.
+	 */
 	int binaryElement = 0;
 	int xyBinaryElement = 0;
 
@@ -56,7 +60,7 @@ void Maze::LoadBinary(char *fileName)
 		{
 			this->setHeight(x);
 		}
-		else if(binaryElement == numberOfLinesBinary)
+		else if(binaryElement == numberOfEdgesBinary)
 		{
 			this->setNumOfEdges(x);
 			/**
@@ -68,6 +72,22 @@ void Maze::LoadBinary(char *fileName)
 		}
 		else
 		{
+			/**
+			 * After setting the width, height and number
+			 * of Edges, we now set the x1,y1,x2,y2 values
+			 *
+			 * So we minus in the order u see below and
+			 * divide and get the remainder to get the
+			 * correct binary number.
+			 * [w][h][E]
+			 * [0][1][2][ (3 - 3) / 4 r 0 ]
+			 * [0][1][2][3][ 4 / 4 r 0 ]
+			 * [0][1][2][3][4][ (5 - 1) / 4 r 0 ]
+			 * [0][1][2][3][4][5][ (6 - 2) /4 r 0 ]
+			 *
+			 * Start over again...
+			 * [0][1][2][3][4][5][6][ (7 - 3) /4 r 0 ]
+			 */
 			if(((binaryElement - 3) % everyForthBinary) == 0)
 			{
 				eArray[xyBinaryElement].x1 = x;

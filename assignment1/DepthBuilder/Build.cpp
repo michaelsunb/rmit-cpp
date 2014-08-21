@@ -38,6 +38,12 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 	this->buildMaze->setHeight(height);
 	this->buildMaze->setNumOfEdges((width * height) - 1);
 
+	/**
+	 * Get the reference so that any
+	 * modifications to mazeEdges &
+	 * mazeArray will affect the
+	 * Maze class
+	 */
 	vector<Edges> & mazeEdges = this->buildMaze->mazeEdgeArray();
 	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
 
@@ -91,11 +97,18 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			 */
 			this->ChooseRandomNeighbour();
 
+			/**
+			 * Set the maze edge in the Maze class
+			 */
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});
+
+			/**
+			 * Set the maze cell in the Maze class to true
+			 */
 			mazeArray[currentX][currentY].visited = true;
 
 			/**
-			 * Create a stack and head back to the start
+			 * Create a stack and go back to the start
 			 * of the loop
 			 */
 			trail.push(mazeArray[currentX][currentY]);

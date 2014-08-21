@@ -21,9 +21,18 @@ void DepthBuilder::CheckNeighbours()
 	 */
 	allowableNeighbours.clear();
 
+	/**
+	 * Check if the current stack x and y values
+	 * are less than the width or height
+	 * respectively because we don't want to check
+	 * if we have neighbours over the width and
+	 * height.
+	 */
 	if(currentX < width-1)
 	{
-		//check if increment of x is visited
+		/**
+		 * check if increment of x is visited
+		 */
 		if(!mazeArray[currentX+1][currentY].visited)
 		{
 			allowableNeighbours.push_back(xIncrementGoEast);
@@ -32,16 +41,26 @@ void DepthBuilder::CheckNeighbours()
 
 	if(currentY < height-1)
 	{
-		//check if increment of y is visited
+		/**
+		 * check if increment of y is visited
+		 */
 		if(!mazeArray[currentX][currentY+1].visited)
 		{
 			allowableNeighbours.push_back(yIncrementGoNorth);
 		}
 	}
 
+	/**
+	 * Check if the current stack x and y values
+	 * are greater than zero because we don't
+	 * want to check if we have neighbours below
+	 * the value of zero
+	 */
 	if(currentX > 0)
 	{
-		//check if decrement of x is visited
+		/**
+		 * check if decrement of x is visited
+		 */
 		if(!mazeArray[currentX-1][currentY].visited)
 		{
 			allowableNeighbours.push_back(xDecrementGoWest);
@@ -50,7 +69,9 @@ void DepthBuilder::CheckNeighbours()
 
 	if(currentY > 0)
 	{
-		//check if decrement of y is visited
+		/**
+		 * check if decrement of y is visited
+		 */
 		if(!mazeArray[currentX][currentY-1].visited)
 		{
 			allowableNeighbours.push_back(yDecrementGoSouth);
