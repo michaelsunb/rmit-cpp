@@ -24,7 +24,6 @@ void Maze::LoadBinary(char *fileName)
 	if(!dataFile.is_open())
 	{
 		throw "Maze binary file was not found";
-		return;
 	}
 
 	/**
@@ -36,10 +35,6 @@ void Maze::LoadBinary(char *fileName)
 
 	int x = 0;
 
-	/**
-	 * Loop the binary file
-	 * until the end of file
-	 */
 	while(!dataFile.eof())
 	{
 		/**
@@ -55,7 +50,6 @@ void Maze::LoadBinary(char *fileName)
 		if(x < 0)
 		{
 			throw "Invalid binary file";
-			return;
 		}
 
 		if(binaryElement == widthBinary)
@@ -78,11 +72,6 @@ void Maze::LoadBinary(char *fileName)
 		}
 		else
 		{
-			if(xyBinaryElement >= numOfEdges)
-			{
-				throw "Invalid binary file";
-				return;
-			}
 			/**
 			 * After setting the width, height and number
 			 * of Edges, we now set the x1,y1,x2,y2 values
@@ -99,22 +88,41 @@ void Maze::LoadBinary(char *fileName)
 			 * Start over again...
 			 * [0][1][2][3][4][5][6][ (7 - 3) /4 r 0 ]
 			 */
-			if(((binaryElement - 3) % everyForthBinary) == 0)
+			if(xyBinaryElement < numOfEdges)
 			{
-				eArray[xyBinaryElement].x1 = x;
+				if(((binaryElement - 3) % everyForthBinary) == 0)
+				{
+					eArray[xyBinaryElement].x1 = x;
+				}
+				if(((binaryElement) % everyForthBinary) == 0)
+				{
+					eArray[xyBinaryElement].y1 = x;
+				}
+				if(((binaryElement - 1) % everyForthBinary) == 0)
+				{
+					eArray[xyBinaryElement].x2 = x;
+				}
+				if(((binaryElement - 2) % everyForthBinary) == 0)
+				{
+					eArray[xyBinaryElement].y2 = x;
+				}
 			}
-			if(((binaryElement) % everyForthBinary) == 0)
-			{
-				eArray[xyBinaryElement].y1 = x;
-			}
-			if(((binaryElement - 1) % everyForthBinary) == 0)
-			{
-				eArray[xyBinaryElement].x2 = x;
-			}
+
+			/**
+			 * Need this outside from above
+			 * if(((binaryElement - 2) % everyForthBinary) == 0)
+			 * because if the binary file is greater
+			 * than the size of the vector, then it
+			 * will cause an error
+			 */
 			if(((binaryElement - 2) % everyForthBinary) == 0)
 			{
-				eArray[xyBinaryElement].y2 = x;
 				xyBinaryElement++;
+			}
+
+			if(xyBinaryElement > numOfEdges)
+			{
+				throw "Invalid binary file";
 			}
 		}
 		binaryElement++;
@@ -124,7 +132,6 @@ void Maze::LoadBinary(char *fileName)
 	if(xyBinaryElement != this->numOfEdges)
 	{
 		throw "Invalid binary file";
-		return;
 	}
 }
 
