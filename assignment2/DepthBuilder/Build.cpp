@@ -69,7 +69,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 		 * to generate a vector of neighbours
 		 * not visited yet
 		 */
-		this->CheckNeighbours();
+		this->checkNeighbours();
 
 		/**
 		 * The above method will set an array
@@ -86,7 +86,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			 * Randomly choose whether to go
 			 * North, South East, West
 			 */
-			this->ChooseRandomNeighbour(rng);
+			this->chooseRandomNeighbour(rng);
 
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});
 			mazeArray[currentX][currentY].visited = true;

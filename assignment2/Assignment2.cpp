@@ -56,7 +56,7 @@ int main(int argc, char ** argv) {
 				 * parameters
 				 */
 				aMazeIn = new Maze();
-				DepthBuilder().Build(*aMazeIn,width,height,seed);
+				DepthBuilder().build(*aMazeIn,width,height,seed);
 			}
 
 			if(strcmp(argv[i], "--lb") == 0)
@@ -66,7 +66,7 @@ int main(int argc, char ** argv) {
 				 * To load a binary file.
 				 */
 				aMazeIn = new Maze();
-				aMazeIn->LoadBinary(argv[++i]);
+				aMazeIn->loadBinary(argv[++i]);
 			}
 
 			if(strcmp(argv[i], "--sb") == 0)
@@ -75,7 +75,7 @@ int main(int argc, char ** argv) {
 				{
 					throw "Could not save to binary";
 				}
-				aMazeIn->SaveBinary(argv[++i]);
+				aMazeIn->saveBinary(argv[++i]);
 			}
 
 			if(strcmp(argv[i], "--sv") == 0)
@@ -84,7 +84,7 @@ int main(int argc, char ** argv) {
 				{
 					throw "Could not save to svg";
 				}
-				aMazeIn->SaveSVG(argv[++i]);
+				aMazeIn->saveSVG(argv[++i]);
 			}
 		}
 
