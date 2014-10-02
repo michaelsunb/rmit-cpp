@@ -14,7 +14,7 @@ const int everyForthBinary = 4;
 
 using namespace std;
 
-void Maze::LoadBinary(char *fileName)
+void Maze::loadBinary(char *fileName)
 {
 	cout << "Loading maze: " << fileName << endl;
 

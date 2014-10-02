@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void Maze::SaveSVG(char *fileName)
+void Maze::saveSVG(char *fileName)
 {
 	cout << "Saving svg maze: " << fileName << endl;
 

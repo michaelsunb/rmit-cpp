@@ -11,9 +11,9 @@
 
 using namespace std;
 
-void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
+void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 {
-	srand(seed);
+	mt19937 rng(seed);
 
 	cout << "Generating maze with seed: " << seed
 			<< ", width: " << width
@@ -86,7 +86,7 @@ void DepthBuilder::Build(Maze &maze,int width, int height,int seed)
 			 * Randomly choose whether to go
 			 * North, South East, West
 			 */
-			this->ChooseRandomNeighbour();
+			this->ChooseRandomNeighbour(rng);
 
 			mazeEdges.push_back({prevX,prevY,currentX,currentY});
 			mazeArray[currentX][currentY].visited = true;

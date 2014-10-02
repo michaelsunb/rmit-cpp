@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void Maze::SaveBinary(char *fileName)
+void Maze::saveBinary(char *fileName)
 {
 	cout << "Saving binary maze: " << fileName << endl;
 

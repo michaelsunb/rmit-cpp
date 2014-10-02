@@ -5,8 +5,7 @@
  *      Author: Michaelsun Baluyos
  */
 
-#ifndef MAZE_H_
-#define MAZE_H_
+#pragma once
 
 #include "Assignment2.h"
 #include "Edges.h"
@@ -27,9 +26,9 @@ private:
 	std::vector<std::vector<Cell>> twoDCell;
 	
 public:
-	void LoadBinary(char *filename);
-	void SaveBinary(char *filename);
-	void SaveSVG(char *filename);
+	void loadBinary(char *filename);
+	void saveBinary(char *filename);
+	void saveSVG(char *filename);
 
 	void setWidth(int width);
 	void setHeight(int height);
@@ -41,5 +40,3 @@ public:
 	std::vector<Edges> & mazeEdgeArray();
 	std::vector<std::vector<Cell>> & mazeCellArray();
 };
-
-#endif /* MAZE_H_ */

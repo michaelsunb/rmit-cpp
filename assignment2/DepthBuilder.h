@@ -13,6 +13,7 @@
 #include "Assignment2.h"
 #include "Maze.h"
 #include "Cell.h"
+#include <random>
 
 class DepthBuilder
 {
@@ -56,7 +57,7 @@ private:
 	 * Based on the non-visited neighhbours
 	 * choose a random neighbour to go to
 	 */
-	void ChooseRandomNeighbour();
+	void ChooseRandomNeighbour(std::mt19937 &rng);
 public:
 
 	/**

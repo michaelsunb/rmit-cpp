@@ -10,15 +10,19 @@
 
 using namespace std;
 
-int main(int argc, char ** argv)
-{
+int main(int argc, char ** argv) {
 	if(argc <= 1)
 	{
 		cout << "./exe --lb filename.maze --ss filename.svg \n"
-				"./exe -g seed width height --sb filename.maze\n"
-				"./exe -g seed width height --sv filename.svg\n"
-				"./exe -g seed width height --sb filename.maze "
-				"--sv filename.svg" << endl;
+				"./exe --gr seed width height --sb filename.maze\n"
+				"./exe --gr seed width height --sv filename.svg\n"
+				"./exe --gr seed width height --sb filename.maze "
+				"--sv filename.svg"
+
+				"./exe --gk seed width height --sb filename.maze\n"
+				"./exe --gk seed width height --sv filename.svg\n"
+				"./exe --gk seed width height --sb filename.maze "
+				"--sv filename.svg";
 		return 0;
 	}
 
@@ -83,6 +87,8 @@ int main(int argc, char ** argv)
 				aMazeIn->SaveSVG(argv[++i]);
 			}
 		}
+
+		delete aMazeIn;
 	}
 	catch (char const* param)
 	{

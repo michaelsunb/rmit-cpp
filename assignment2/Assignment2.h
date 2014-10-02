@@ -5,15 +5,10 @@
  *      Author: Michaelsun Baluyos
  */
 
-#ifndef ASSIGNMENT1_H_
-#define ASSIGNMENT1_H_
-
+#pragma once
 
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
-
-
-#endif /* ASSIGNMENT1_HPP_ */

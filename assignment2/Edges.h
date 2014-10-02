@@ -5,8 +5,7 @@
  *      Author: Michaelsun Baluyos
  */
 
-#ifndef EDGES_H_
-#define EDGES_H_
+#pragma once
 
 /**
  * Edges represents
@@ -20,6 +19,3 @@ struct Edges
 	int x2;
 	int y2;
 };
-
-
-#endif /* EDGES_H_ */

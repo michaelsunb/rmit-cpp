@@ -6,9 +6,7 @@
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#ifndef CELL_H_
-#define CELL_H_
-
+#pragma once
 
 struct Cell
 {
@@ -21,7 +19,3 @@ struct Cell
 	int x2;
 	int y2;
 };
-
-
-
-#endif /* CELL_H_ */

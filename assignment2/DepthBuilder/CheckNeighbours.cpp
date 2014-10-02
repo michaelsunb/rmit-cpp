@@ -8,7 +8,7 @@
 
 #include "../DepthBuilder.h"
 
-void DepthBuilder::CheckNeighbours()
+void DepthBuilder::checkNeighbours()
 {
 	std::vector<std::vector<Cell>> mazeArray =
 			buildMaze->mazeCellArray();
