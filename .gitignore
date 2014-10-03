@@ -2,3 +2,7 @@
 
 /RemoteSystemsTempFiles/
 /.metadata/
+*.svg
+/assignment2/.settings
+/assignment2/*.project
+/assignment2/*.cproject
