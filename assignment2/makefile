@@ -1,17 +1,19 @@
-LIBS=Maze DepthBuilder
-INCLUDE_PATH=/
+INCLUDE_PATH=src/
+LIBS=$(wildcard $(INCLUDE_PATH)*)
 
-exe: ofiles
-	g++  -Wall -Wextra -pedantic -std=c++11 Assignment2.cpp ofiles/* -I$(INCLUDE_PATH) -o exe
+exe: Debug
+	g++  -Wall -Wextra -pedantic -std=c++11 $(INCLUDE_PATH)Assignment2.cpp Debug/* -I$(INCLUDE_PATH) -o exe
 
-ofiles:
-	mkdir ofiles/
+Debug:
+	mkdir Debug/
 	for dir in $(LIBS); do \
-		cd $$dir; \
-		g++  -Wall -Wextra -pedantic -std=c++11  -c *.cpp -I../; \
-		mv *.o ../ofiles/; \
-		cd -; \
+		if [ -d $$dir ]; then \
+			cd $$dir; \
+			g++  -Wall -Wextra -pedantic -std=c++11 -c *.cpp -I../; \
+			mv *.o ../../Debug/; \
+			cd -; \
+		fi \
 	done
 
 clean:
-	rm -rf ofiles/ exe
+	rm -rf Debug/ exe *.svg
