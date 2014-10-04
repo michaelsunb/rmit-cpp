@@ -14,7 +14,7 @@ vector<vector<Cell>> & Maze::mazeCellArray()
 	return twoDCell;
 }
 
-vector<Edges> & Maze::mazeEdgeArray()
+vector<Edge> & Maze::mazeEdgeArray()
 {
 	return eArray;
 }

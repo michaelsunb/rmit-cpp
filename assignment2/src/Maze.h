@@ -8,7 +8,7 @@
 #pragma once
 
 #include "Assignment2.h"
-#include "Edges.h"
+#include "Edge.h"
 #include "Cell.h"
 
 class Maze
@@ -22,7 +22,7 @@ private:
 	/**
 	 * for recursive backtracker
 	 */
-	std::vector<Edges> eArray;
+	std::vector<Edge> eArray;
 	std::vector<std::vector<Cell>> twoDCell;
 	
 public:
@@ -37,6 +37,6 @@ public:
 	/**
 	 * for recursive backtracker
 	 */
-	std::vector<Edges> & mazeEdgeArray();
+	std::vector<Edge> & mazeEdgeArray();
 	std::vector<std::vector<Cell>> & mazeCellArray();
 };
