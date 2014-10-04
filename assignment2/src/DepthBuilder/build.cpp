@@ -34,7 +34,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 	 * Maze class
 	 */
 	vector<Edge> & mazeEdges = this->buildMaze->mazeEdgeArray();
-	vector<vector<Cell>> & mazeArray = this->buildMaze->mazeCellArray();
+	vector<vector<VisitedCell>> & mazeArray = this->buildMaze->mazeCellArray();
 
 	/**
 	 * initialise first dimension with width

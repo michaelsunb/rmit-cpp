@@ -23,7 +23,7 @@ private:
 	 * for recursive backtracker
 	 */
 	std::vector<Edge> eArray;
-	std::vector<std::vector<Cell>> twoDCell;
+	std::vector<std::vector<VisitedCell>> twoDCell;
 	
 public:
 	void loadBinary(char *filename);
@@ -38,5 +38,5 @@ public:
 	 * for recursive backtracker
 	 */
 	std::vector<Edge> & mazeEdgeArray();
-	std::vector<std::vector<Cell>> & mazeCellArray();
+	std::vector<std::vector<VisitedCell>> & mazeCellArray();
 };

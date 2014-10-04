@@ -9,7 +9,7 @@
 
 using namespace std;
 
-vector<vector<Cell>> & Maze::mazeCellArray()
+vector<vector<VisitedCell>> & Maze::mazeCellArray()
 {
 	return twoDCell;
 }

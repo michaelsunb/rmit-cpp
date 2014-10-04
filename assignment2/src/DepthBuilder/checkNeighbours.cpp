@@ -10,7 +10,7 @@
 
 void DepthBuilder::checkNeighbours()
 {
-	std::vector<std::vector<Cell>> mazeArray =
+	std::vector<std::vector<VisitedCell>> mazeArray =
 			buildMaze->mazeCellArray();
 
 	/**
