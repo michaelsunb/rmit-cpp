@@ -10,7 +10,8 @@
 
 using namespace std;
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv)
+{
 	if(argc <= 1)
 	{
 		cout << "./exe --lb filename.maze --ss filename.svg \n"

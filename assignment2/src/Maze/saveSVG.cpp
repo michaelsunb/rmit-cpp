@@ -30,7 +30,8 @@ void Maze::saveSVG(char *fileName)
 		 * Also don't use endl or flush or it will
 		 * have a severe performance hit
 		 */
-		svgFile << "<line stroke='white' stroke-width='0.005'"
+		svgFile << "<line stroke=\"" << eArray[i].colour <<
+				"\" stroke-width='0.005'"
 				" x1='" << float(eArray[i].x1)/width << "'"
 				" y1='" << float(eArray[i].y1)/height << "'"
 				" x2='" << float(eArray[i].x2)/width << "'"

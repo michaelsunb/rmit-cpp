@@ -88,7 +88,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			 */
 			this->chooseRandomNeighbour(rng);
 
-			mazeEdges.push_back({prevX,prevY,currentX,currentY});
+			mazeEdges.push_back(Edges(prevX,prevY,currentX,currentY,"white"));
 			mazeArray[currentX][currentY].visited = true;
 
 			/**
