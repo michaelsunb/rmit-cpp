@@ -7,6 +7,7 @@
 
 #include "DepthBuilder.h"
 #include "Maze.h"
+//#include "Kruskal.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main(int argc, char ** argv)
 				"./exe --gk seed width height --sb filename.maze\n"
 				"./exe --gk seed width height --sv filename.svg\n"
 				"./exe --gk seed width height --sb filename.maze "
-				"--sv filename.svg";
+				"--sv filename.svg" << endl;
 		return 0;
 	}
 
@@ -95,6 +96,8 @@ int main(int argc, char ** argv)
 	{
 		cout << param << ".\nMissing generated maze." << endl;
 	}
+
+//	Kruskal().build(10,10,1);
 
 	return 0;
 }

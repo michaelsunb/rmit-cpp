@@ -33,7 +33,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 	 * mazeArray will affect the
 	 * Maze class
 	 */
-	vector<Edge> & mazeEdges = this->buildMaze->mazeEdgeArray();
+	vector<SVGEdge> & mazeEdges = this->buildMaze->mazeEdgeArray();
 	vector<vector<VisitedCell>> & mazeArray = this->buildMaze->mazeCellArray();
 
 	/**
@@ -86,9 +86,9 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			 * Randomly choose whether to go
 			 * North, South East, West
 			 */
-			this->chooseRandomNeighbour(rng);
+			this->chooseNeighbour(rng);
 
-			mazeEdges.push_back(Edge(prevX,prevY,currentX,currentY,"white"));
+			mazeEdges.push_back(SVGEdge(prevX,prevY,currentX,currentY,"white"));
 			mazeArray[currentX][currentY].visited = true;
 
 			/**

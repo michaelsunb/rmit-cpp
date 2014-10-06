@@ -10,7 +10,7 @@
 #include "../DepthBuilder.h"
 
 
-void DepthBuilder::chooseRandomNeighbour(std::mt19937 &rng)
+void DepthBuilder::chooseNeighbour(std::mt19937 &rng)
 {
 	/**
 	 * randomly choose a neighbour based

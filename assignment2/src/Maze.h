@@ -22,7 +22,7 @@ private:
 	/**
 	 * for recursive backtracker
 	 */
-	std::vector<Edge> eArray;
+	std::vector<SVGEdge> eArray;
 	std::vector<std::vector<VisitedCell>> twoDCell;
 	
 public:
@@ -37,6 +37,6 @@ public:
 	/**
 	 * for recursive backtracker
 	 */
-	std::vector<Edge> & mazeEdgeArray();
+	std::vector<SVGEdge> & mazeEdgeArray();
 	std::vector<std::vector<VisitedCell>> & mazeCellArray();
 };

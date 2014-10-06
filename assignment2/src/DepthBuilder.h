@@ -6,16 +6,16 @@
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#ifndef DEPTHBUILDER_H_
-#define DEPTHBUILDER_H_
+#pragma once
 
 
 #include "Assignment2.h"
 #include "Maze.h"
 #include "Cell.h"
+#include "Depth.h"
 #include <random>
 
-class DepthBuilder
+class DepthBuilder : public Depth
 {
 private:
 	int width = 0;
@@ -41,25 +41,9 @@ private:
 	int currentX = 0;
 	int currentY = 0;
 
-	/**
-	 * Private methods because why do
-	 * other classes need to access
-	 * these methods
-	 *
-	 * CheckNeighbours to check the
-	 * current stack's neighbours
-	 * and set them in allowableNeighbours
-	 * vector
-	 */
+	void chooseNeighbour(std::mt19937 &rng);
 	void checkNeighbours();
-
-	/**
-	 * Based on the non-visited neighhbours
-	 * choose a random neighbour to go to
-	 */
-	void chooseRandomNeighbour(std::mt19937 &rng);
 public:
-
 	/**
 	 * Build method as stated in lab 4
 	 * For object orientation
@@ -67,7 +51,3 @@ public:
 	 */
 	void build(Maze &maze,int width, int height,int seed);
 };
-
-
-
-#endif /* DEPTHBUILDER_H_ */

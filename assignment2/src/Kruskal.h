@@ -27,7 +27,6 @@ class Kruskal
 	 */
 	std::vector<std::vector<int>> RANK;
 
-	std::vector<Cell> vertices;
 	std::vector<KruskalEdge> edges;
 
 public:
