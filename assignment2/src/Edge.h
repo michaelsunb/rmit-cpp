@@ -29,15 +29,15 @@ struct Edge
 
 struct SVGEdge : public Edge
 {
-	std::string colour = "white";
+	std::string colour;
 
 	SVGEdge(int iX1,int iY1,int iX2,int iY2, std::string color)
-	: colour(color)
 	{
 		x1 = iX1;
 		y1 = iY1;
 		x2 = iX2;
 		y2 = iY2;
+		colour = color;
 	}
 
 	SVGEdge(): colour("white") {}

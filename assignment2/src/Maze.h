@@ -11,6 +11,8 @@
 #include "Edge.h"
 #include "Cell.h"
 
+#include <iostream>
+
 class Maze
 {
 private:

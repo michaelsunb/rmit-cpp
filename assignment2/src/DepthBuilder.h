@@ -15,7 +15,7 @@
 #include "Depth.h"
 #include <random>
 
-class DepthBuilder : public Depth
+class DepthBuilder
 {
 private:
 	int width = 0;
@@ -41,7 +41,7 @@ private:
 	int currentX = 0;
 	int currentY = 0;
 
-	void chooseNeighbour(std::mt19937 &rng);
+	void chooseNeighbour();
 	void checkNeighbours();
 public:
 	/**
@@ -49,5 +49,5 @@ public:
 	 * For object orientation
 	 * Used to generate a new maze
 	 */
-	void build(Maze &maze,int width, int height,int seed);
+	Node build(Maze &maze,int width, int height,int seed);
 };

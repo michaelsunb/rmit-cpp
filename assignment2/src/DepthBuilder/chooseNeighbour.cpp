@@ -10,14 +10,14 @@
 #include "../DepthBuilder.h"
 
 
-void DepthBuilder::chooseNeighbour(std::mt19937 &rng)
+void DepthBuilder::chooseNeighbour()
 {
 	/**
 	 * randomly choose a neighbour based
 	 * on how many is not visited
 	 */
 	int howManyNeighbours = allowableNeighbours.size();
-	switch(allowableNeighbours[rng() % howManyNeighbours])
+	switch(allowableNeighbours[rand() % howManyNeighbours])
 	{
 	case xIncrementGoEast:
 		++currentX;

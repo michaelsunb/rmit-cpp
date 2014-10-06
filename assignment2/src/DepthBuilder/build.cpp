@@ -11,9 +11,9 @@
 
 using namespace std;
 
-void DepthBuilder::build(Maze &maze,int width, int height,int seed)
+Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 {
-	mt19937 rng(seed);
+	srand(seed);
 
 	cout << "Generating maze with seed: " << seed
 			<< ", width: " << width
@@ -59,11 +59,14 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 	 * Vectors? Why not try something different.
 	 * Let's use a stack!
 	 */
-	stack<Cell> trail;
+	stack<VisitedCell> trail;
 	trail.push(mazeArray[currentX][currentY]);
+
+	Node root(0,0);
 
 	while(trail.empty()==false)
 	{
+		Node newNode = Node(currentX,currentY);
 		/**
 		 * Go to ChooseRandomNeighbour method
 		 * to generate a vector of neighbours
@@ -86,7 +89,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			 * Randomly choose whether to go
 			 * North, South East, West
 			 */
-			this->chooseNeighbour(rng);
+			this->chooseNeighbour();
 
 			mazeEdges.push_back(SVGEdge(prevX,prevY,currentX,currentY,"white"));
 			mazeArray[currentX][currentY].visited = true;
@@ -117,5 +120,7 @@ void DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			 */
 			trail.pop();
 		}
+		root.addChild(newNode);
 	}
+	return root;
 }

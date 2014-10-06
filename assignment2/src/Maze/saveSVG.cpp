@@ -19,7 +19,7 @@ void Maze::saveSVG(char *fileName)
 			"xmlns='http://www.w3.org/2000/svg'>\n"
 			"<rect width='1' height='1' style='fill: black' />" << endl;
 
-	for(int i = 0; i < this->numOfEdges  ; i++)
+	for(SVGEdge eA: eArray)
 	{
 		/**
 		 * We want to cast the x,y arrays to float
@@ -30,12 +30,12 @@ void Maze::saveSVG(char *fileName)
 		 * Also don't use endl or flush or it will
 		 * have a severe performance hit
 		 */
-		svgFile << "<line stroke=\"" << eArray[i].colour <<
+		svgFile << "<line stroke=\"" << eA.colour <<
 				"\" stroke-width='0.005'"
-				" x1='" << float(eArray[i].x1)/width << "'"
-				" y1='" << float(eArray[i].y1)/height << "'"
-				" x2='" << float(eArray[i].x2)/width << "'"
-				" y2='" << float(eArray[i].y2)/height << "'/>\n";
+				" x1='" << float(eA.x1)/width << "'"
+				" y1='" << float(eA.y1)/height << "'"
+				" x2='" << float(eA.x2)/width << "'"
+				" y2='" << float(eA.y2)/height << "'/>\n";
 	}
 
 	svgFile << "</svg>" << flush;
