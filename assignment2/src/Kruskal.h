@@ -36,7 +36,5 @@ public:
 
 	void unionM(Cell root1, Cell root2); // merge;
 
-	bool ifEquals(Cell root1,Cell root2);
-
 	void build(int width, int height,int seed);
 };

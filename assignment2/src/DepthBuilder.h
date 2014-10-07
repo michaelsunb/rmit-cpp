@@ -12,7 +12,6 @@
 #include "Assignment2.h"
 #include "Maze.h"
 #include "Cell.h"
-#include "Depth.h"
 #include <random>
 
 class DepthBuilder

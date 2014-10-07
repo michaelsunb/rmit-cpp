@@ -7,7 +7,9 @@
 
 #include "DepthBuilder.h"
 #include "Maze.h"
-//#include "Kruskal.h"
+#include "Kruskal.h"
+#include "DepthFirstSearch.h"
+#include "BreadthFirstSearch.h"
 
 using namespace std;
 
@@ -32,7 +34,7 @@ int main(int argc, char ** argv)
 	 * Use nullptr so we can check if the
 	 * Maze class has been instantiated.
 	 */
-	Maze *aMazeIn = nullptr;
+	Maze *aMazeIn = new Maze();
 	try
 	{
 		for(int i = 1; i < argc ; i++)
@@ -57,8 +59,10 @@ int main(int argc, char ** argv)
 				 * input in the DepthBuilder().build
 				 * parameters
 				 */
-				aMazeIn = new Maze();
-				DepthBuilder().build(*aMazeIn,width,height,seed);
+				//aMazeIn = new Maze();
+				Node root = DepthBuilder().build(*aMazeIn,width,height,seed);
+				BreadthFirstSearch().computePath(*aMazeIn,root);
+				//DepthFirstSearch().computePath(*aMazeIn,root);
 			}
 
 			if(strcmp(argv[i], "--lb") == 0)
@@ -97,7 +101,7 @@ int main(int argc, char ** argv)
 		cout << param << ".\nMissing generated maze." << endl;
 	}
 
-//	Kruskal().build(10,10,1);
+	//Kruskal().build(10,10,1);
 
 	return 0;
 }

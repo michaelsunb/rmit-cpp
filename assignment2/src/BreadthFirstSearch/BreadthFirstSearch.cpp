@@ -1,27 +1,21 @@
 /*
- * main.cpp
+ * BreadthFirstSearch.cpp
  *
- *  Created on: 8 Oct 2014
+ *  Created on: 9 Oct 2014
  *      Author: Michaelsun Baluyos
  *       Email: s3110401@student.rmit.edu.au
  */
 
-#include "../Cell.h"
-//#include "Maze.h"
-#include "../DepthFirstSearch.h"
 
-//#include <iostream>
-#include <string>
-#include <vector>
-//#include <queue>
-#include <stack>
-#include <algorithm>
+
+#include "../BreadthFirstSearch.h"
+
 
 using namespace std;
 
-void DepthFirstSearch::dFS(Node root, Node goal)
+void BreadthFirstSearch::bFS(Node root, Node goal)
 {
-	std::stack<Node> Q;
+	std::queue<Node> Q;
 	std::vector<Node> children;
 
 	int prevX;
@@ -36,7 +30,7 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 	{
 		prevX = curX;
 		prevY = curY;
-		Node t = Q.top();
+		Node t = Q.front();
 		curX = t.x2;
 		curY = t.y2;
 
@@ -56,7 +50,6 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 		}
 
 		children = t.getChildren();
-		std::reverse(children.begin(),children.end());
 
 		for (int i = 0; i < children.size(); ++i)
 		{
@@ -65,7 +58,7 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 	}
 }
 
-void DepthFirstSearch::computePath(Maze &maze,Node root)
+void BreadthFirstSearch::computePath(Maze &maze,Node root)
 {
 	buildMaze = &maze;
 	vector<vector<VisitedCell>> mazeA = buildMaze->mazeCellArray();
@@ -73,5 +66,5 @@ void DepthFirstSearch::computePath(Maze &maze,Node root)
 	int width = mazeA.size();
 	int height = mazeA[0].size();
 
-	dFS(root, Node(width-1,height-1));
+	bFS(root, Node(width-1,height-1));
 }

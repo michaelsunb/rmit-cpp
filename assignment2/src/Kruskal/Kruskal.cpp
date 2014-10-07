@@ -64,24 +64,6 @@ void Kruskal::unionM(Cell root1, Cell root2) // merge
 	}
 }
 
-bool Kruskal::ifEquals(Cell root1,Cell root2)
-{
-	int x1 = root1.x2;
-	int y1 = root1.y2;
-
-	int x2 = root2.x2;
-	int y2 = root2.y2;
-
-	if((x1 == x2) && (y1 == y2))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 void Kruskal::build(int width, int height,int seed)
 {
 	srand(seed);
@@ -156,12 +138,16 @@ void Kruskal::build(int width, int height,int seed)
 	{
 		Cell root1 = findM({e.x1,e.y1});
 		Cell root2 = findM({e.x2,e.y2});
-		if(!ifEquals(root1,root2))
+		if(!(root1 == root2))
 		{
 			A.push_back(SVGEdge(e.x1,e.y1,e.x2,e.y2,"white"));
 			unionM(root1,root2);
 		}
 	}
+	sort(A.begin(), A.end(),[](SVGEdge prev, SVGEdge cur)
+			{
+				return (prev.x1 < cur.x1) && (prev.y1 < cur.y1);
+			});
 
 	cout << "Saving Kruskal svg maze: test.svg" << endl;
 	ofstream svgFile("test.svg", ofstream::out);
