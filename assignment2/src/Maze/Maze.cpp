@@ -9,11 +9,6 @@
 
 using namespace std;
 
-vector<vector<VisitedCell>> & Maze::mazeCellArray()
-{
-	return twoDCell;
-}
-
 vector<SVGEdge> & Maze::mazeEdgeArray()
 {
 	return eArray;
@@ -29,6 +24,11 @@ void Maze::setWidth(int width)
 	this->width = width;
 }
 
+int Maze::getWidth()
+{
+	return width;
+}
+
 void Maze::setHeight(int height)
 {
 	if(height < 0)
@@ -37,6 +37,11 @@ void Maze::setHeight(int height)
 		return;
 	}
 	this->height = height;
+}
+
+int Maze::getHeight()
+{
+	return height;
 }
 
 void Maze::setNumOfEdges(int numOfEdges)

@@ -25,7 +25,6 @@ private:
 	 * for recursive backtracker
 	 */
 	std::vector<SVGEdge> eArray;
-	std::vector<std::vector<VisitedCell>> twoDCell;
 	
 public:
 	void loadBinary(char *filename);
@@ -33,7 +32,9 @@ public:
 	void saveSVG(char *filename);
 
 	void setWidth(int width);
+	int getWidth();
 	void setHeight(int height);
+	int getHeight();
 	void setNumOfEdges(int height);
 
 	/**

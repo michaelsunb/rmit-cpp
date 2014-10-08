@@ -41,7 +41,7 @@ private:
 	int currentY = 0;
 
 	void chooseNeighbour();
-	void checkNeighbours();
+	void checkNeighbours(VisitedCell ** mazeArray);
 public:
 	/**
 	 * Build method as stated in lab 4

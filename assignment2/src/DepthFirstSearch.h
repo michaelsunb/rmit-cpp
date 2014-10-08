@@ -12,7 +12,6 @@
 #include "Edge.h"
 #include "Cell.h"
 #include "Maze.h"
-#include "Depth.h"
 #include <vector>
 #include <stack>
 

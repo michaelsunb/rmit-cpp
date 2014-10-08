@@ -34,25 +34,14 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 	 * Maze class
 	 */
 	vector<SVGEdge> & mazeEdges = this->buildMaze->mazeEdgeArray();
-	vector<vector<VisitedCell>> & mazeArray = this->buildMaze->mazeCellArray();
 
 	/**
 	 * initialise first dimension with width
 	 */
-	mazeArray.resize(width);
+	VisitedCell ** mazeArray = new VisitedCell*[width];
 	for(int x=0;x<width;x++)
 	{
-		for(int y=0;y<height;y++)
-		{
-			/**
-			 * we can initialise (resize) the vector
-			 * in the for loop before this but
-			 * just use push_back because we need
-			 * to the cell struct to false and
-			 * the current x and y value
-			 */
-			mazeArray[x].push_back({false,x, y});
-		}
+		mazeArray[x] = new VisitedCell[height];
 	}
 
 	/**
@@ -72,7 +61,7 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 		 * to generate a vector of neighbours
 		 * not visited yet
 		 */
-		this->checkNeighbours();
+		this->checkNeighbours(mazeArray);
 
 		/**
 		 * The above method will set an array
@@ -92,7 +81,7 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 			this->chooseNeighbour();
 
 			mazeEdges.push_back(SVGEdge(prevX,prevY,currentX,currentY,"white"));
-			mazeArray[currentX][currentY].visited = true;
+			mazeArray[currentX][currentY] = VisitedCell(true,currentX,currentY);
 
 			/**
 			 * Create a stack and go back to the start

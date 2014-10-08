@@ -10,6 +10,7 @@
 #include "Kruskal.h"
 #include "DepthFirstSearch.h"
 #include "BreadthFirstSearch.h"
+#include "AStar.h"
 
 using namespace std;
 
@@ -55,14 +56,14 @@ int main(int argc, char ** argv)
 				const int height = atoi(argv[++i]);
 
 				/**
-				 * Instantiate the Maze class here to
+				 * Instantiate the Maze class here to1
 				 * input in the DepthBuilder().build
 				 * parameters
 				 */
 				//aMazeIn = new Maze();
 				Node root = DepthBuilder().build(*aMazeIn,width,height,seed);
-				BreadthFirstSearch().computePath(*aMazeIn,root);
-				//DepthFirstSearch().computePath(*aMazeIn,root);
+				//BreadthFirstSearch().computePath(*aMazeIn,root);
+				DepthFirstSearch().computePath(*aMazeIn,root);
 			}
 
 			if(strcmp(argv[i], "--lb") == 0)
@@ -102,6 +103,7 @@ int main(int argc, char ** argv)
 	}
 
 	//Kruskal().build(10,10,1);
+	//new AStar();
 
 	return 0;
 }

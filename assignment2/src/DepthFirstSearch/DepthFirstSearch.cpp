@@ -45,6 +45,7 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 			if((mEdge.x1 == prevX) && (mEdge.y1 == prevY) && (mEdge.x2 == curX) && (mEdge.y2 == curY))
 			{
 				mEdge.colour = "red";
+				break;
 			}
 		}
 
@@ -68,10 +69,8 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 void DepthFirstSearch::computePath(Maze &maze,Node root)
 {
 	buildMaze = &maze;
-	vector<vector<VisitedCell>> mazeA = buildMaze->mazeCellArray();
-
-	int width = mazeA.size();
-	int height = mazeA[0].size();
+	int width = buildMaze->getWidth();
+	int height = buildMaze->getWidth();
 
 	dFS(root, Node(width-1,height-1));
 }

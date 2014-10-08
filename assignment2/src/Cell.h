@@ -36,11 +36,10 @@ struct VisitedCell : public Cell
 	bool visited;
 
 	VisitedCell(bool iVisited,int iX2, int iY2)
-	{
-		visited = iVisited;
-		x2 = iX2;
-		y2 = iY2;
-	}
+	: visited(iVisited), Cell(iX2,iY2) {}
+
+	VisitedCell()
+	: visited(false), Cell(0,0) {}
 };
 
 

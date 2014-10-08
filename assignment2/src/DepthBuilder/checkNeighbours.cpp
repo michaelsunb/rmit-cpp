@@ -8,11 +8,8 @@
 
 #include "../DepthBuilder.h"
 
-void DepthBuilder::checkNeighbours()
+void DepthBuilder::checkNeighbours(VisitedCell** mazeArray)
 {
-	std::vector<std::vector<VisitedCell>> mazeArray =
-			buildMaze->mazeCellArray();
-
 	/**
 	 * Clear allowableNeighbours so we can set a new
 	 * vector of non-visited neighbours

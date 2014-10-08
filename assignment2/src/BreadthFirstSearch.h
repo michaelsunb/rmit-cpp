@@ -26,6 +26,5 @@ private:
 
 	void bFS(Node root, Node goal);
 public:
-	//DepthFirstSearch() : buildMaze(0), width(0), height(0), mazeEdges(0),mazeArray(0){};
 	void computePath(Maze &maze,Node root);
 };
