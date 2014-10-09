@@ -60,7 +60,6 @@ int main(int argc, char ** argv)
 				 * input in the DepthBuilder().build
 				 * parameters
 				 */
-				//aMazeIn = new Maze();
 				Node root = DepthBuilder().build(*aMazeIn,width,height,seed);
 				//BreadthFirstSearch().computePath(*aMazeIn,root);
 				DepthFirstSearch().computePath(*aMazeIn,root);

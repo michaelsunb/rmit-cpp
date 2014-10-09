@@ -111,5 +111,10 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 		}
 		root.addChild(newNode);
 	}
+	for(int i = 0; i < width; ++i)
+	{
+	    delete [] mazeArray[i];
+	}
+	delete [] mazeArray;
 	return root;
 }
