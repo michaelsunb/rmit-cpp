@@ -22,11 +22,11 @@ class Kruskal
 	 * PARENT[x1][y1] = Cell
 	 * so we get Cell.x2 & Cell.y2
 	 */
-	std::vector<std::vector<Cell>> PARENT;
+	Cell** PARENT;
 	/**
 	 * RANK[x2][y2] = weight
 	 */
-	std::vector<std::vector<int>> RANK;
+	int** RANK;
 
 	std::vector<KruskalEdge> edges;
 
