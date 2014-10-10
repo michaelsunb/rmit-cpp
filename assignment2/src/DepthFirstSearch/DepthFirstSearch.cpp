@@ -59,7 +59,7 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 		children = t.getChildren();
 		std::reverse(children.begin(),children.end());
 
-		for (int i = 0; i < children.size(); ++i)
+		for (size_t i = 0; i < children.size(); ++i)
 		{
 			Q.push(children[i]);
 		}
