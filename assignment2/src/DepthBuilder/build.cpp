@@ -15,7 +15,7 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 {
 	srand(seed);
 
-	cout << "Generating maze with seed: " << seed
+	cout << "Generating DepthBuilder maze with seed: " << seed
 			<< ", width: " << width
 			<< ", height: " << height << endl;
 

@@ -48,11 +48,6 @@ struct KruskalEdge : public Edge
 	int weight;
 
 	KruskalEdge(Cell childCell,Cell parentCell, int iWeight)
-	/**
-	 * : x1(iX1), y1(iY1), x2(iX2), y2(iY2), weight(iWeight)
-	 * Weird how above does not work, so we initialise them
-	 * inside the curly brackets
-	 */
 	{
 		x1 = childCell.x2;
 		y1 = childCell.y2;

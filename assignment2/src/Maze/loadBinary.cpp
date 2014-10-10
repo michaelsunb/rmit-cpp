@@ -34,6 +34,8 @@ void Maze::loadBinary(char *fileName)
 
 	int x = 0;
 
+	Node root(0,0);
+
 	while(!dataFile.eof())
 	{
 		/**
@@ -120,6 +122,9 @@ void Maze::loadBinary(char *fileName)
 			 */
 			if(((binaryElement - 2) % everyForthBinary) == 0)
 			{
+				Node newNode = Node(eArray[xyBinaryElement].x2,
+						eArray[xyBinaryElement].y2);
+				root.addChild(newNode);
 				xyBinaryElement++;
 			}
 

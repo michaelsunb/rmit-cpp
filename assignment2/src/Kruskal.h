@@ -13,6 +13,7 @@
 #include <random>
 #include "Cell.h"
 #include "Edge.h"
+#include "Maze.h"
 
 
 class Kruskal
@@ -36,5 +37,5 @@ public:
 
 	void unionM(Cell root1, Cell root2); // merge;
 
-	void build(int width, int height,int seed);
+	Node build(Maze &maze,int width, int height,int seed);
 };

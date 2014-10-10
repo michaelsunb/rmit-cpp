@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "../Kruskal.h"
+#include "../Maze.h"
 
 using namespace std;
 
@@ -64,9 +65,13 @@ void Kruskal::unionM(Cell root1, Cell root2) // merge
 	}
 }
 
-void Kruskal::build(int width, int height,int seed)
+Node Kruskal::build(Maze &maze,int width, int height,int seed)
 {
 	srand(seed);
+
+	cout << "Generating Kruskal maze with seed: " << seed
+			<< ", width: " << width
+			<< ", height: " << height << endl;
 
 	int numOfLines = (width*height);
 
@@ -76,6 +81,7 @@ void Kruskal::build(int width, int height,int seed)
 	Cell newCell = {0,0};
 	int random = 0;
 
+	Node root(0,0);
 	int i = 0;
 	for(int x=0;x<width;x++)
 	{
@@ -124,46 +130,31 @@ void Kruskal::build(int width, int height,int seed)
 		}
 	}
 
-	for(KruskalEdge e : edges)
-	{
-		i++;
-		cout << i << ") x1='" << e.x1 << "' y1='" << e.y1 << "' x2='" << e.x2 << "' y2='" << e.y2 << "' weight='" << e.weight << endl;
-	}
-
 	sort(edges.begin(), edges.end(),[](KruskalEdge x, KruskalEdge y){return x.weight < y.weight;});
 
-	vector<SVGEdge> A;
+	Maze* buildMaze = &maze;
+	buildMaze->setWidth(width);
+	buildMaze->setHeight(height);
+	vector<SVGEdge> & mazeEdges = buildMaze->mazeEdgeArray();
 
 	for(KruskalEdge e : edges)
 	{
-		Cell root1 = findM({e.x1,e.y1});
-		Cell root2 = findM({e.x2,e.y2});
+		int prevX = e.x1;
+		int prevY = e.y1;
+		int currentX = e.x2;
+		int currentY = e.y2;
+
+		Cell root1 = findM({prevX,prevY});
+		Cell root2 = findM({currentX,currentY});
 		if(!(root1 == root2))
 		{
-			A.push_back(SVGEdge(e.x1,e.y1,e.x2,e.y2,"white"));
+			mazeEdges.push_back(SVGEdge(prevX,prevY,currentX,currentY,"white"));
 			unionM(root1,root2);
+
+			Node newNode = Node(e.x2,e.y2);
+			root.addChild(newNode);
 		}
 	}
-	sort(A.begin(), A.end(),[](SVGEdge prev, SVGEdge cur)
-			{
-				return (prev.x1 < cur.x1) && (prev.y1 < cur.y1);
-			});
 
-	cout << "Saving Kruskal svg maze: test.svg" << endl;
-	ofstream svgFile("test.svg", ofstream::out);
-
-	svgFile << "<svg viewBox='0 0 1 1' width='500' height='500' "
-			"xmlns='http://www.w3.org/2000/svg'>\n"
-			"<rect width='1' height='1' style='fill: black' />" << endl;
-	for(SVGEdge e : A)
-	{
-		svgFile << "<line stroke='white' stroke-width='0.005'"
-				" x1='" << float(e.x1)/width
-				<< "' y1='" << float(e.y1)/height
-				<< "' x2='" << float(e.x2)/width
-				<< "' y2='" << float(e.y2)/height  << "'/>\n";
-	}
-
-	svgFile << "</svg>" << flush;
-	svgFile.close();
+	return root;
 }

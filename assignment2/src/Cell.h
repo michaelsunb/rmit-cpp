@@ -53,6 +53,12 @@ struct Node : public Cell
 		y2 = y;
 	}
 
+	Node()
+		{
+			x2 = 0;
+			y2 = 0;
+		}
+
 	void addChild(Node n)
 	{
 		children.push_back(n);

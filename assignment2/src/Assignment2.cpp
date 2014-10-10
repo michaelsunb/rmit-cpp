@@ -10,7 +10,7 @@
 #include "Kruskal.h"
 #include "DepthFirstSearch.h"
 #include "BreadthFirstSearch.h"
-#include "AStar.h"
+#include "Cell.h"
 
 using namespace std;
 
@@ -36,6 +36,8 @@ int main(int argc, char ** argv)
 	 * Maze class has been instantiated.
 	 */
 	Maze *aMazeIn = new Maze();
+	bool doNotContinue = true;
+	Node root;
 	try
 	{
 		for(int i = 1; i < argc ; i++)
@@ -44,25 +46,54 @@ int main(int argc, char ** argv)
 			 * strcmp from the <string.h> library
 			 * to compare 2 strings together
 			 */
-			if(strcmp(argv[i], "-g") == 0)
+			if(doNotContinue)
 			{
-				 /**
-				  * atoi from the <stdlib.h> library
-				  * to convert a string in a
-				  * specific array into an int
-				  */
-				const int seed = atoi(argv[++i]);
-				const int width = atoi(argv[++i]);
-				const int height = atoi(argv[++i]);
+				if(strcmp(argv[i], "--gr") == 0)
+				{
+					 /**
+					  * atoi from the <stdlib.h> library
+					  * to convert a string in a
+					  * specific array into an int
+					  */
+					const int seed = atoi(argv[++i]);
+					const int width = atoi(argv[++i]);
+					const int height = atoi(argv[++i]);
 
-				/**
-				 * Instantiate the Maze class here to1
-				 * input in the DepthBuilder().build
-				 * parameters
-				 */
-				Node root = DepthBuilder().build(*aMazeIn,width,height,seed);
-				//BreadthFirstSearch().computePath(*aMazeIn,root);
+					/**
+					 * Instantiate the Maze class here to1
+					 * input in the DepthBuilder().build
+					 * parameters
+					 */
+					root = DepthBuilder().build(*aMazeIn,width,height,seed);
+					doNotContinue = false;
+				}
+				else if(strcmp(argv[i], "--gk") == 0)
+				{
+					const int seed = atoi(argv[++i]);
+					const int width = atoi(argv[++i]);
+					const int height = atoi(argv[++i]);
+
+					root = Kruskal().build(*aMazeIn,width,height,seed);
+					doNotContinue = false;
+				}
+			}
+
+			if(strcmp(argv[i], "--pd") == 0)
+			{
+				if(doNotContinue)
+				{
+					throw "Could not solve maze";
+				}
 				DepthFirstSearch().computePath(*aMazeIn,root);
+			}
+
+			if(strcmp(argv[i], "--pb") == 0)
+			{
+				if(doNotContinue)
+				{
+					throw "Could not solve maze";
+				}
+				BreadthFirstSearch().computePath(*aMazeIn,root);
 			}
 
 			if(strcmp(argv[i], "--lb") == 0)
@@ -71,13 +102,13 @@ int main(int argc, char ** argv)
 				 * Or instantiate the Maze class here
 				 * To load a binary file.
 				 */
-				aMazeIn = new Maze();
 				aMazeIn->loadBinary(argv[++i]);
+				doNotContinue = false;
 			}
 
 			if(strcmp(argv[i], "--sb") == 0)
 			{
-				if(aMazeIn == nullptr)
+				if(doNotContinue)
 				{
 					throw "Could not save to binary";
 				}
@@ -86,7 +117,7 @@ int main(int argc, char ** argv)
 
 			if(strcmp(argv[i], "--sv") == 0)
 			{
-				if(aMazeIn == nullptr)
+				if(doNotContinue)
 				{
 					throw "Could not save to svg";
 				}
@@ -100,9 +131,6 @@ int main(int argc, char ** argv)
 	{
 		cout << param << ".\nMissing generated maze." << endl;
 	}
-
-	//Kruskal().build(10,10,1);
-	//new AStar();
 
 	return 0;
 }
