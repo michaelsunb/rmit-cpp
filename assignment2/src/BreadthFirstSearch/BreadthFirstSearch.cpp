@@ -58,7 +58,7 @@ void BreadthFirstSearch::bFS(Node root, Node goal)
 
 		children = t.getChildren();
 
-		for (int i = 0; i < children.size(); ++i)
+		for (size_t i = 0; i < children.size(); ++i)
 		{
 			Q.push(children[i]);
 		}
