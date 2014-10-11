@@ -8,10 +8,8 @@
 
 
 #include "../Cell.h"
-//#include "Maze.h"
 #include "../BreadthFirstSearch.h"
 
-//#include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
@@ -72,5 +70,7 @@ void BreadthFirstSearch::computePath(Maze &maze,Node root)
 	int width = buildMaze->getWidth();
 	int height = buildMaze->getHeight();
 
+	cout << "Solving path from {0,0} to {9,9} using "
+			"Breadth First Search Algorithm" << endl;
 	bFS(root, Node(width-1,height-1));
 }

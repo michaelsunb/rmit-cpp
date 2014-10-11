@@ -7,13 +7,10 @@
  */
 
 #include "../Cell.h"
-//#include "Maze.h"
 #include "../DepthFirstSearch.h"
 
-//#include <iostream>
 #include <string>
 #include <vector>
-//#include <queue>
 #include <stack>
 #include <algorithm>
 
@@ -72,5 +69,7 @@ void DepthFirstSearch::computePath(Maze &maze,Node root)
 	int width = buildMaze->getWidth();
 	int height = buildMaze->getWidth();
 
+	cout << "Solving path from {0,0} to {9,9} using "
+			"Depth First Search Algorithm" << endl;
 	dFS(root, Node(width-1,height-1));
 }

@@ -62,10 +62,10 @@ struct Node : public Cell
 	}
 
 	Node()
-		{
-			x2 = 0;
-			y2 = 0;
-		}
+	{
+		x2 = 0;
+		y2 = 0;
+	}
 
 	void addChild(Node n)
 	{

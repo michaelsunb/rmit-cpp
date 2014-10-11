@@ -85,9 +85,11 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 	{
 		PARENT[x] = new Cell[height];
 		RANK[x] = new int[height];
+
 		for(int y=0;y<height;y++)
 		{
 			newCell = {x, y};
+			makeSet(newCell);
 
 			if(x<width-1)
 			{
@@ -124,8 +126,6 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 				Cell newCellDecY = {x,decY};
 				edges.push_back(KruskalEdge(newCell,newCellDecY,random));
 			}
-
-			makeSet({x, y});
 		}
 	}
 
@@ -141,14 +141,15 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 	{
 		int prevX = e.x1;
 		int prevY = e.y1;
-		int currentX = e.x2;
-		int currentY = e.y2;
+		int currX = e.x2;
+		int currY = e.y2;
 
 		Cell root1 = findM({prevX,prevY});
-		Cell root2 = findM({currentX,currentY});
+		Cell root2 = findM({currX,currY});
 		if(!(root1 == root2))
 		{
-			mazeEdges.push_back(SVGEdge(prevX,prevY,currentX,currentY,"white"));
+			mazeEdges.push_back(SVGEdge(prevX,prevY,currX,currY,"white"));
+
 			unionM(root1,root2);
 
 			root.addChild(Node(mazeEdges[currentX].x1,
