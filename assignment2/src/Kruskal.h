@@ -18,24 +18,28 @@
 
 class Kruskal
 {
+	int numOfLines;
+	Cell newCell;
 	/**
 	 * PARENT[x1][y1] = Cell
 	 * so we get Cell.x2 & Cell.y2
 	 */
-	Cell** PARENT;
+	Cell** parent;
 	/**
 	 * RANK[x2][y2] = weight
 	 */
-	int** RANK;
+	int** rank;
 
 	std::vector<KruskalEdge> edges;
 
 public:
-	Cell findM(Cell vertex);
+	void randomiseEdgeWeight(int x,int y);
+
+	Cell findSet(Cell vertex);
 
 	void makeSet(Cell vertex);
 
-	void unionM(Cell root1, Cell root2); // merge;
+	void unionSet(Cell root1, Cell root2); // merge;
 
 	Node build(Maze &maze,int width, int height,int seed);
 };

@@ -19,6 +19,9 @@ using namespace std;
 
 void BreadthFirstSearch::bFS(Node root, Node goal)
 {
+	/**
+	 * Breadth First Search we use a queue
+	 */
 	std::queue<Node> Q;
 	std::vector<Node> children;
 
