@@ -66,6 +66,15 @@ void BreadthFirstSearch::bFS(Node root, Node goal)
 
 		Q.pop();
 
+		/**
+		 * This is where that
+		 * operator overload
+		 * comes in handy.
+		 *
+		 * Check if the current
+		 * node equals the goal
+		 * node
+		 */
 		if(t == goal)
 		{
 			return;

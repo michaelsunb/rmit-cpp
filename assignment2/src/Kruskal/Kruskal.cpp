@@ -13,20 +13,6 @@
 
 using namespace std;
 
-Kruskal::~Kruskal()
-{
-	for(int i = 0; i < width; ++i)
-	{
-	    delete [] parent[i];
-	}
-	delete [] parent;
-	for(int i = 0; i < width; ++i)
-	{
-	    delete [] rank[i];
-	}
-	delete [] rank;
-}
-
 Cell Kruskal::findSet(Cell vertex)
 {
 	int x2 = vertex.x2;
@@ -102,15 +88,15 @@ Node Kruskal::build(Maze &maze,int iWidth, int iHeight,int seed)
 			<< ", width: " << width
 			<< ", height: " << height << endl;
 
-	parent = new Cell*[width];
-	rank = new int*[width];
+	parent.resize(width);
+	rank.resize(width);
 
 	newCell = {0,0};
 
 	for(int x=0;x<width;x++)
 	{
-		parent[x] = new Cell[height];
-		rank[x] = new int[height];
+		parent[x].resize(height);
+		rank[x].resize(height);
 
 		for(int y=0;y<height;y++)
 		{

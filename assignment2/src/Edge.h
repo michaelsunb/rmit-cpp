@@ -27,6 +27,11 @@ struct Edge
 	Edge(): x1(0), y1(0), x2(0), y2(0) {}
 };
 
+/**
+ * Extra parameter to
+ * state the colour of
+ * the line edge
+ */
 struct SVGEdge : public Edge
 {
 	std::string colour;
@@ -43,6 +48,12 @@ struct SVGEdge : public Edge
 	SVGEdge(): colour("white") {}
 };
 
+/**
+ * Kruskal strut because
+ * we need weight.
+ * I definitely could
+ * use a template here
+ */
 struct KruskalEdge : public Edge
 {
 	int weight;

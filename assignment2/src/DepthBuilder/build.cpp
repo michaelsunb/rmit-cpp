@@ -38,10 +38,10 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 	/**
 	 * initialise first dimension with width
 	 */
-	VisitedCell ** mazeArray = new VisitedCell*[width];
+	mazeArray.resize(width);
 	for(int x=0;x<width;x++)
 	{
-		mazeArray[x] = new VisitedCell[height];
+		mazeArray[x].resize(height);
 	}
 
 	/**
@@ -61,7 +61,7 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 		 * to generate a vector of neighbours
 		 * not visited yet
 		 */
-		this->checkNeighbours(mazeArray);
+		this->checkNeighbours();
 
 		/**
 		 * The above method will set an array
@@ -111,10 +111,5 @@ Node DepthBuilder::build(Maze &maze,int width, int height,int seed)
 		}
 		root.addChild(newNode);
 	}
-	for(int i = 0; i < width; ++i)
-	{
-	    delete [] mazeArray[i];
-	}
-	delete [] mazeArray;
 	return root;
 }

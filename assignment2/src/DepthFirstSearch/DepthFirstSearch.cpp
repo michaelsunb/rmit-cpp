@@ -43,6 +43,12 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 		curX = t.x2;
 		curY = t.y2;
 
+		/**
+		 * Get top of stack mark
+		 * the edge as red and
+		 * then pop and add the
+		 * neighbours
+		 */
 		for(SVGEdge & mEdge : newMazeEdges)
 		{
 			if((mEdge.x1 == prevX) && (mEdge.y1 == prevY) && (mEdge.x2 == curX) && (mEdge.y2 == curY))
@@ -54,6 +60,12 @@ void DepthFirstSearch::dFS(Node root, Node goal)
 
 		Q.pop();
 
+		/**
+		 * Operator overload
+		 * check if the current
+		 * node equals equals
+		 * the goal node
+		 */
 		if(t == goal)
 		{
 			return;

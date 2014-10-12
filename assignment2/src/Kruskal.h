@@ -25,11 +25,11 @@ class Kruskal
 	 * PARENT[x1][y1] = Cell
 	 * so we get Cell.x2 & Cell.y2
 	 */
-	Cell** parent;
+	std::vector<std::vector<Cell>> parent;
 	/**
 	 * RANK[x2][y2] = weight
 	 */
-	int** rank;
+	std::vector<std::vector<int>> rank;
 
 	std::vector<KruskalEdge> edges;
 
@@ -57,6 +57,4 @@ public:
 	void unionSet(Cell root1, Cell root2); // merge;
 
 	Node build(Maze &maze,int width, int height,int seed);
-
-	~Kruskal();
 };

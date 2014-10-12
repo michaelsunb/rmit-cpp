@@ -21,6 +21,11 @@ struct Cell
 	Cell(int x2,int y2): x2(x2), y2(y2) {};
 	Cell(): x2(0), y2(0) {};
 
+	/**
+	 * Operator overload the
+	 * equals-equals to detect
+	 * if two cells equal each other
+	 */
 	bool operator==(Cell b)
 	{
 		if((b.x2 == x2) && (b.y2 == y2))
@@ -50,7 +55,12 @@ struct VisitedCell : public Cell
 	}
 };
 
-
+/**
+ * Node so that x and y
+ * can have children and
+ * the children can have
+ * children
+ */
 struct Node : public Cell
 {
 	std::vector<Node> children;
@@ -72,19 +82,6 @@ struct Node : public Cell
 		children.push_back(n);
 		return;
 	}
-
-	void addChild(int x2,int y2)
-	{
-		children.push_back(Node(x2,y2));
-	}
-
-	bool isLeaf()
-	{
-		return children.size()==0;
-	}
-
-	int getX() { return x2; }
-	int getY() { return y2; }
 
 	std::vector<Node> getChildren() { return children; }
 };

@@ -8,7 +8,7 @@
 
 #include "../DepthBuilder.h"
 
-void DepthBuilder::checkNeighbours(VisitedCell** mazeArray)
+void DepthBuilder::checkNeighbours()
 {
 	/**
 	 * Clear allowableNeighbours so we can set a new

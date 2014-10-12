@@ -20,6 +20,7 @@ private:
 	int width = 0;
 	int height = 0;
 	Maze* buildMaze;
+	std::vector<std::vector<VisitedCell>> mazeArray;
 
 	/**
 	 * enum of direction indicating that
@@ -41,7 +42,7 @@ private:
 	int currentY = 0;
 
 	void chooseNeighbour();
-	void checkNeighbours(VisitedCell ** mazeArray);
+	void checkNeighbours();
 public:
 	/**
 	 * Build method as stated in lab 4
