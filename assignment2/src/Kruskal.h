@@ -18,7 +18,8 @@
 
 class Kruskal
 {
-	int numOfLines;
+
+	int width,height;
 	Cell newCell;
 	/**
 	 * PARENT[x1][y1] = Cell
@@ -32,14 +33,30 @@ class Kruskal
 
 	std::vector<KruskalEdge> edges;
 
-public:
+	/**
+	 * Create an edge between two sets
+	 * and add a randmon weight to it
+	 */
 	void randomiseEdgeWeight(int x,int y);
+public:
 
+	/**
+	 * We want to find a
+	 * non-"union"ed set
+	 */
 	Cell findSet(Cell vertex);
 
+	/**
+	 * initialise a set
+	 */
 	void makeSet(Cell vertex);
 
+	/**
+	 * Merge the sets
+	 */
 	void unionSet(Cell root1, Cell root2); // merge;
 
 	Node build(Maze &maze,int width, int height,int seed);
+
+	~Kruskal();
 };

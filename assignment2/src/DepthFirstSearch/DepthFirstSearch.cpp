@@ -18,6 +18,12 @@ using namespace std;
 
 void DepthFirstSearch::dFS(Node root, Node goal)
 {
+	/**
+	 * Breadth First Search and Depth First
+	 * Search algorithm are very similar,
+	 * but instead of using a queue in BFS,
+	 * Depth First Search uses a stack
+	 */
 	std::stack<Node> Q;
 	std::vector<Node> children;
 

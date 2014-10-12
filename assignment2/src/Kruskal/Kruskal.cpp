@@ -13,11 +13,30 @@
 
 using namespace std;
 
+Kruskal::~Kruskal()
+{
+	for(int i = 0; i < width; ++i)
+	{
+	    delete [] parent[i];
+	}
+	delete [] parent;
+	for(int i = 0; i < width; ++i)
+	{
+	    delete [] rank[i];
+	}
+	delete [] rank;
+}
+
 Cell Kruskal::findSet(Cell vertex)
 {
 	int x2 = vertex.x2;
 	int y2 = vertex.y2;
 
+	/**
+	 * Check the set is in its own,
+	 * otherwise checks the set's
+	 * child
+	 */
 	if((parent[x2][y2].x2 == x2)
 			&& (parent[x2][y2].y2 == y2))
 	{
@@ -38,7 +57,7 @@ void Kruskal::makeSet(Cell vertex)
 	rank[x2][y2] = 0;
 }
 
-void Kruskal::unionSet(Cell root1, Cell root2) // merge
+void Kruskal::unionSet(Cell root1, Cell root2)
 {
 	int x1 = root1.x2;
 	int y1 = root1.y2;
@@ -46,6 +65,9 @@ void Kruskal::unionSet(Cell root1, Cell root2) // merge
 	int x2 = root2.x2;
 	int y2 = root2.y2;
 
+	/**
+	 * To order the set we want to rank
+	 */
 	if(rank[x1][y1] > rank[x2][y2])
 	{
 		parent[x2][y2] = root1;//x1,y1
@@ -63,21 +85,22 @@ void Kruskal::unionSet(Cell root1, Cell root2) // merge
 
 void Kruskal::randomiseEdgeWeight(int x,int y)
 {
-	int random = rand() % (numOfLines);
+	int random = rand() % (width*height);
 
 	Cell newCellNeighbour = {x,y};
 	edges.push_back(KruskalEdge(newCell,newCellNeighbour,random));
 }
 
-Node Kruskal::build(Maze &maze,int width, int height,int seed)
+Node Kruskal::build(Maze &maze,int iWidth, int iHeight,int seed)
 {
 	srand(seed);
+
+	width = iWidth;
+	height = iHeight;
 
 	cout << "Generating Kruskal maze with seed: " << seed
 			<< ", width: " << width
 			<< ", height: " << height << endl;
-
-	numOfLines = (width*height);
 
 	parent = new Cell*[width];
 	rank = new int*[width];
@@ -91,6 +114,10 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 
 		for(int y=0;y<height;y++)
 		{
+			/**
+			 * initialise and set the
+			 * sets and edges
+			 */
 			newCell = {x, y};
 			makeSet(newCell);
 
@@ -116,6 +143,9 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 		}
 	}
 
+	/**
+	 * Order the set from lowest to high
+	 */
 	sort(edges.begin(), edges.end(),[](KruskalEdge x, KruskalEdge y){return x.weight < y.weight;});
 
 	Maze* buildMaze = &maze;

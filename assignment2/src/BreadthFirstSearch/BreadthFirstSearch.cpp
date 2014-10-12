@@ -17,6 +17,11 @@
 
 using namespace std;
 
+/**
+ * Breadth First Search and Depth First
+ * Search algorithm are very similar,
+ * I could of used some inheritance
+ */
 void BreadthFirstSearch::bFS(Node root, Node goal)
 {
 	/**
@@ -41,6 +46,15 @@ void BreadthFirstSearch::bFS(Node root, Node goal)
 		curX = t.x2;
 		curY = t.y2;
 
+		/**
+		 * Find in the maze edges and set
+		 * the colour from white to red.
+		 *
+		 * Problem with kruskal being
+		 * un-order and bi-directional
+		 * needed to create an adjacency
+		 * list
+		 */
 		for(SVGEdge & mEdge : newMazeEdges)
 		{
 			if((mEdge.x1 == prevX) && (mEdge.y1 == prevY) && (mEdge.x2 == curX) && (mEdge.y2 == curY))
