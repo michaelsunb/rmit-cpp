@@ -151,9 +151,6 @@ Node Kruskal::build(Maze &maze,int width, int height,int seed)
 			mazeEdges.push_back(SVGEdge(prevX,prevY,currX,currY,"white"));
 
 			unionM(root1,root2);
-
-			root.addChild(Node(mazeEdges[currentX].x1,
-					mazeEdges[currentY].y1));
 		}
 	}
 
